@@ -1,20 +1,29 @@
 import React from 'react';
-import { StyleSheet, Text, View, Image } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableHighlight,
+} from 'react-native';
 import PropTypes from 'prop-types';
-import { iOSColors } from 'react-native-typography';
+
+import globals from '../../helpers/globals';
 
 const BookmarkCell = ({ item }) => {
   return (
-    <View style={cellStyles.cell}>
-      <Image
-        style={cellStyles.image}
-        source={{
-          uri:
-            'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
-        }}
-      />
-      <Text style={cellStyles.title}>{item}</Text>
-    </View>
+    <TouchableHighlight onPress={() => console.log('pressed')}>
+      <View style={cellStyles.cell}>
+        <Image
+          style={cellStyles.image}
+          source={{
+            uri:
+              'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
+          }}
+        />
+        <Text style={cellStyles.title}>{item}</Text>
+      </View>
+    </TouchableHighlight>
   );
 };
 
@@ -23,7 +32,7 @@ const cellStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    height: 40,
+    height: 50,
     paddingHorizontal: 16,
   },
   title: {
@@ -34,7 +43,7 @@ const cellStyles = StyleSheet.create({
     height: 30,
     width: 30,
     borderRadius: 15,
-    backgroundColor: iOSColors.lightGray,
+    backgroundColor: globals.colors.lightGrey,
     alignSelf: 'center',
   },
 });

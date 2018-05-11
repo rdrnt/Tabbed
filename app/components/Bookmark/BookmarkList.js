@@ -57,11 +57,16 @@ class BookmarkList extends Component {
     );
   }
 
+  _renderitemSeparator({ leadingItem, section }) {
+    return <View style={sectionStyles.seperator} />;
+  }
+
   render() {
     return (
       <SectionList
         renderItem={this._renderItem}
         renderSectionHeader={this._renderSectionHeader}
+        ItemSeparatorComponent={this._renderitemSeparator}
         sections={fakeSections}
         keyExtractor={(item, index) => item + index}
       />
@@ -76,6 +81,11 @@ const sectionStyles = {
   view: {
     backgroundColor: globals.colors.lightGrey,
     paddingHorizontal: 16,
+  },
+  seperator: {
+    backgroundColor: globals.colors.lightGrey,
+    height: 1,
+    marginLeft: 16,
   },
 };
 
