@@ -2,10 +2,12 @@ import { Navigation } from 'react-native-navigation';
 
 import Home from './screens/Home';
 import Settings from './screens/Settings';
+import NewBookmark from './screens/NewBookmark';
 
 function registerScreens() {
   Navigation.registerComponent('tabbed.Home', () => Home);
   Navigation.registerComponent('tabbed.Settings', () => Settings);
+  Navigation.registerComponent('tabbed.NewBookmark', () => NewBookmark);
 }
 
 const tabs = [

@@ -3,8 +3,6 @@ import { Platform, StyleSheet, Text, View, SectionList } from 'react-native';
 
 import globals from '../../helpers/globals';
 
-import localStorage from '../../helpers/localStorage';
-
 import BookmarkCell from './BookmarkCell';
 
 const fakeSections = [
@@ -45,7 +43,6 @@ const fakeSections = [
 class BookmarkList extends Component {
   constructor(props) {
     super(props);
-    localStorage.saveItem();
   }
 
   _renderItem({ item, index }) {
