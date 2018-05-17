@@ -1,30 +1,44 @@
-import ls from 'react-native-local-storage';
+import Realm from 'realm';
 
-const BOOKMARK_KEY = 'BOOKMARKS';
+const BookmarkSchema = {
+  name: 'Bookmark',
+  properties: {
+    title: 'string',
+    url: 'string',
+    isPrivate: { type: 'bool', default: false },
+    categories: 'string[]',
+  },
+};
+const BookmarkSchemaVersion = 1;
+
+const realm = new Realm({
+  schema: [BookmarkSchema],
+  schemaVersion: BookmarkSchemaVersion,
+});
+
+console.log(realm.path);
 
 const localStorage = {
-  getBookmarks: callback => {
-    ls.get(BOOKMARK_KEY).then(data => {
-      if (data === null) {
-        callback([]);
-      }
-      callback(data);
-    });
+  getAllBookmarks: callback => {
+    const allBookmarks = realm.objects('Bookmark');
+    callback(allBookmarks);
   },
 
   saveBookmark: bookmark => {
     // get the bookmarks
-    localStorage.getBookmarks(bookmarks => {
-      // Save the bookmark
-      console.log('Bookmarks are', bookmarks);
-      bookmarks.push(bookmark);
-      ls.save(BOOKMARK_KEY, bookmarks).then(() => {});
+    realm.write(() => {
+      /*
+      realm.create('Bookmark', {
+        title: 'Cool dog',
+        url: 'https://google.ca',
+        isPrivate: false,
+        categories: ['art'],
+      });
+      */
     });
   },
 
-  deleteAllBookmarks: () => {
-    ls.clear();
-  },
+  deleteAllBookmarks: () => {},
 };
 
 export default localStorage;

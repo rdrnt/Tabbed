@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import t from 'tcomb-form-native';
 
-import globals from '../helpers/globals';
+import { globals, localStorage } from '../helpers';
 
 const Form = t.form.Form;
 

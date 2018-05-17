@@ -1,11 +1,3 @@
 {
-  "plugins": [
-    "transform-object-rest-spread",
-    "syntax-dynamic-import",
-    "transform-class-properties"
-  ],
-  "presets": [
-    "react"
-  ],
-  "compact": "false"
+  "presets": ["react-native"]
 }

@@ -11,6 +11,13 @@ export default class Home extends Component {
     super(props);
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+    localStorage.getAllBookmarks(bookmarks => {
+      // console.log('bookis', bookmarks);
+      bookmarks.forEach(mark => {
+        console.log(mark.title);
+      });
+    });
   }
 
   static navigatorButtons = {
