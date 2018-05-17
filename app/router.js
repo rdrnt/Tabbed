@@ -1,11 +1,11 @@
 import { Navigation } from 'react-native-navigation';
 
-import Home from './screens/Home';
+import Bookmarks from './screens/Bookmarks';
 import Settings from './screens/Settings';
 import NewBookmark from './screens/NewBookmark';
 
 function registerScreens() {
-  Navigation.registerComponent('tabbed.Home', () => Home);
+  Navigation.registerComponent('tabbed.Bookmarks', () => Bookmarks);
   Navigation.registerComponent('tabbed.Settings', () => Settings);
   Navigation.registerComponent('tabbed.NewBookmark', () => NewBookmark);
 }
@@ -13,7 +13,7 @@ function registerScreens() {
 const tabs = [
   {
     label: 'Bookmarks',
-    screen: 'tabbed.Home',
+    screen: 'tabbed.Bookmarks',
     icon: require('./assets/images/bookmark.png'),
     selectedIcon: require('./assets/images/bookmark.png'),
     title: 'Bookmarks',

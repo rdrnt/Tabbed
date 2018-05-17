@@ -6,7 +6,7 @@ import BookmarkList from '../components/Bookmark/BookmarkList';
 import { localStorage } from '../helpers';
 
 // Home page AKA bookmark page
-export default class Home extends Component {
+export default class Bookmarks extends Component {
   constructor(props) {
     super(props);
 
