@@ -3,6 +3,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
 
+import { localStorage } from '../helpers';
+
 // Home page AKA bookmark page
 export default class Home extends Component {
   constructor(props) {

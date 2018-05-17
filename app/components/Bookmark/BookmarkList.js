@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Platform, StyleSheet, Text, View, SectionList } from 'react-native';
 
-import globals from '../../helpers/globals';
+import { globals } from '../../helpers';
 
 import BookmarkCell from './BookmarkCell';
 
@@ -44,6 +44,8 @@ class BookmarkList extends Component {
   constructor(props) {
     super(props);
   }
+
+  componentDidMount() {}
 
   _renderItem({ item, index }) {
     return <BookmarkCell key={index} item={item} />;

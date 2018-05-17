@@ -1,16 +1,29 @@
 import ls from 'react-native-local-storage';
 
+const BOOKMARK_KEY = 'BOOKMARKS';
+
 const localStorage = {
-  getItem: () => {
-    console.log('hello');
+  getBookmarks: callback => {
+    ls.get(BOOKMARK_KEY).then(data => {
+      if (data === null) {
+        callback([]);
+      }
+      callback(data);
+    });
   },
 
-  saveItem: () => {
-    ls.save('test', { dog: '123' }).then(() => {
-      ls.get('test').then(data => {
-        console.log('the data is', data);
-      });
+  saveBookmark: bookmark => {
+    // get the bookmarks
+    localStorage.getBookmarks(bookmarks => {
+      // Save the bookmark
+      console.log('Bookmarks are', bookmarks);
+      bookmarks.push(bookmark);
+      ls.save(BOOKMARK_KEY, bookmarks).then(() => {});
     });
+  },
+
+  deleteAllBookmarks: () => {
+    ls.clear();
   },
 };
 
