@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
 
-import { localStorage } from '../helpers';
+import { localStorage, sorter } from '../helpers';
 
 // Home page AKA bookmark page
 export default class Bookmarks extends Component {
@@ -13,10 +13,7 @@ export default class Bookmarks extends Component {
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
     localStorage.getAllBookmarks(bookmarks => {
-      // console.log('bookis', bookmarks);
-      bookmarks.forEach(mark => {
-        console.log(mark.title);
-      });
+      sorter.sortForSections(bookmarks);
     });
   }
 
