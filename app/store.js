@@ -2,10 +2,18 @@ import { createStore, applyMiddleware, compose } from 'redux';
 import thunkMiddleware from 'redux-thunk';
 import { composeWithDevTools } from 'remote-redux-devtools';
 
-import common from './reducers/common';
+import rootReducer from './reducers';
 
-const middleware = composeWithDevTools();
+const defaultState = {
+  bookmarks: [],
+};
 
-const store = createStore(common, middleware);
+const middleware = applyMiddleware(thunkMiddleware);
 
-export default store;
+export default function configureStore(initialState) {
+  return createStore(
+    rootReducer,
+    defaultState,
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__(middleware)
+  );
+}

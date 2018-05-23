@@ -4,10 +4,25 @@ import Bookmarks from './screens/Bookmarks';
 import Settings from './screens/Settings';
 import NewBookmark from './screens/NewBookmark';
 
-function registerScreens() {
-  Navigation.registerComponent('tabbed.Bookmarks', () => Bookmarks);
-  Navigation.registerComponent('tabbed.Settings', () => Settings);
-  Navigation.registerComponent('tabbed.NewBookmark', () => NewBookmark);
+function registerScreens(store, Provider) {
+  Navigation.registerComponent(
+    'tabbed.Bookmarks',
+    () => Bookmarks,
+    store,
+    Provider
+  );
+  Navigation.registerComponent(
+    'tabbed.Settings',
+    () => Settings,
+    store,
+    Provider
+  );
+  Navigation.registerComponent(
+    'tabbed.NewBookmark',
+    () => NewBookmark,
+    store,
+    Provider
+  );
 }
 
 const tabs = [

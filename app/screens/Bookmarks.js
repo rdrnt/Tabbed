@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View } from 'react-native';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
@@ -6,7 +7,7 @@ import BookmarkList from '../components/Bookmark/BookmarkList';
 import { localStorage, sorter } from '../helpers';
 
 // Home page AKA bookmark page
-export default class Bookmarks extends Component {
+class Bookmarks extends Component {
   constructor(props) {
     super(props);
 
@@ -59,3 +60,12 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
+
+function mapStateToProps(state, ownProps) {
+  console.log('the state is', state, ownProps);
+  return {
+    courseData: state,
+  };
+}
+
+export default connect(mapStateToProps)(Bookmarks);
