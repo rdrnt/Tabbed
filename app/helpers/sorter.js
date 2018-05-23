@@ -28,7 +28,7 @@ const alphabet = [
 ];
 
 const sorter = {
-  sortForSections: bookmarks => {
+  sortForSections: (bookmarks, callback) => {
     // we'll store all the bookmarks we've sorted in here
     const allBookmarks = [];
     // going through the alphabet
@@ -46,8 +46,7 @@ const sorter = {
         });
       }
     });
-    console.log(allBookmarks);
-    return allBookmarks;
+    callback(allBookmarks);
   },
 };
 

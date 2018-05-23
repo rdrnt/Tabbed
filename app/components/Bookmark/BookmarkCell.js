@@ -21,7 +21,7 @@ const BookmarkCell = ({ item }) => {
               'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
           }}
         />
-        <Text style={cellStyles.title}>{item}</Text>
+        <Text style={cellStyles.title}>{item.title}</Text>
       </View>
     </TouchableHighlight>
   );

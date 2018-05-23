@@ -1,8 +1,11 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import t from 'tcomb-form-native';
 
 import { globals, localStorage } from '../helpers';
+
+import { bookmarkActions } from '../actions';
 
 const Form = t.form.Form;
 
@@ -43,11 +46,13 @@ const options = {
   },
 };
 
-export default class NewBookmark extends Component {
+class NewBookmark extends Component {
   constructor(props) {
     super(props);
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
+
+    console.log('propsies', this.props);
   }
 
   static navigatorButtons = {
@@ -70,9 +75,11 @@ export default class NewBookmark extends Component {
   }
 
   _onSubmit() {
+    const { dispatch } = this.props;
     const value = this._form.getValue();
     if (value) {
-      console.log(value);
+      console.log('adding new bookmark');
+      dispatch(bookmarkActions.addBookmark());
     }
   }
 
@@ -93,3 +100,5 @@ const styles = StyleSheet.create({
     backgroundColor: globals.colors.lighterGrey,
   },
 });
+
+export default connect()(NewBookmark);

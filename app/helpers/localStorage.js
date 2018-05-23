@@ -18,27 +18,26 @@ const realm = new Realm({
 
 console.log(realm.path);
 
+realm.objects('Bookmark').addListener((event, changes) => {
+  console.log('event', event, changes);
+});
+
 const localStorage = {
   getAllBookmarks: callback => {
     const allBookmarks = realm.objects('Bookmark');
     callback(allBookmarks);
   },
 
-  saveBookmark: bookmark => {
-    // get the bookmarks
+  addNewBookmark: () => {
     realm.write(() => {
-      /*
       realm.create('Bookmark', {
-        title: 'Cool dog',
-        url: 'https://google.ca',
+        title: 'Bobby',
+        url: 'https://burger.com',
         isPrivate: false,
-        categories: ['art'],
+        categories: ['food'],
       });
-      */
     });
   },
-
-  deleteAllBookmarks: () => {},
 };
 
 export default localStorage;

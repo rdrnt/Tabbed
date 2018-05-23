@@ -3,6 +3,9 @@ function bookmarks(state = [], action) {
     case 'GET_BOOKMARKS': {
       return { ...state };
     }
+    case 'UPDATE_BOOKMARKS': {
+      return { ...state, list: action.list };
+    }
     default: {
       return state;
     }

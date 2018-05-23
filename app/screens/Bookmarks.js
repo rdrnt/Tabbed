@@ -4,6 +4,8 @@ import { StyleSheet, Text, View } from 'react-native';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
 
+import { bookmarkActions } from '../actions';
+
 import { localStorage, sorter } from '../helpers';
 
 // Home page AKA bookmark page
@@ -13,9 +15,12 @@ class Bookmarks extends Component {
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
-    localStorage.getAllBookmarks(bookmarks => {
-      sorter.sortForSections(bookmarks);
-    });
+    this.state = {
+      bookmarks: [],
+    };
+
+    console.log(this.props);
+    this.props.dispatch(bookmarkActions.fetchBookmarks());
   }
 
   static navigatorButtons = {
@@ -43,10 +48,21 @@ class Bookmarks extends Component {
     }
   }
 
+  componentDidMount() {
+    localStorage.getAllBookmarks(bookmarks => {
+      // sorter.sortForSections(bookmarks);
+      sorter.sortForSections(bookmarks, sortedBookmarks => {
+        this.setState({
+          bookmarks: sortedBookmarks,
+        });
+      });
+    });
+  }
+
   render() {
     return (
       <View>
-        <BookmarkList />
+        <BookmarkList bookmarks={this.state.bookmarks} />
       </View>
     );
   }
@@ -61,10 +77,9 @@ const styles = StyleSheet.create({
   },
 });
 
-function mapStateToProps(state, ownProps) {
-  console.log('the state is', state, ownProps);
+function mapStateToProps(state) {
   return {
-    courseData: state,
+    ...state,
   };
 }
 

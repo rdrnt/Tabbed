@@ -64,12 +64,14 @@ class BookmarkList extends Component {
   }
 
   render() {
+    const { bookmarks } = this.props;
+
     return (
       <SectionList
         renderItem={this._renderItem}
         renderSectionHeader={this._renderSectionHeader}
         ItemSeparatorComponent={this._renderitemSeparator}
-        sections={fakeSections}
+        sections={bookmarks}
         keyExtractor={(item, index) => item + index}
       />
     );
