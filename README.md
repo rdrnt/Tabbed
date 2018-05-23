@@ -6,6 +6,8 @@
 - Settings
 - Ability to add bookmark
 - Create bookmarks class
+- Dark mode
+- Searching / Sorting
 
 # Libraries
 
