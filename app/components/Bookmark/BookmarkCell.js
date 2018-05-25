@@ -36,6 +36,7 @@ const cellStyles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   title: {
+    paddingLeft: 5,
     fontWeight: 'bold',
     alignSelf: 'center',
   },

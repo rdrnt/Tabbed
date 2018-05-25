@@ -5,47 +5,10 @@ import { globals } from '../../helpers';
 
 import BookmarkCell from './BookmarkCell';
 
-const fakeSections = [
-  {
-    title: 'A',
-    data: ['Animals', 'Ardvark'],
-  },
-  {
-    title: 'B',
-    data: ['Boats', 'Bots'],
-  },
-  {
-    title: 'C',
-    data: ['Crackers', 'Corn'],
-  },
-  {
-    title: 'D',
-    data: ['Denial'],
-  },
-  {
-    title: 'E',
-    data: ['Easypz', 'Easy'],
-  },
-  {
-    title: 'F',
-    data: ['Franlin', 'Forest'],
-  },
-  {
-    title: 'G',
-    data: ['Gator'],
-  },
-  {
-    title: 'H',
-    data: ['Hankering', 'Hallow'],
-  },
-];
-
 class BookmarkList extends Component {
   constructor(props) {
     super(props);
   }
-
-  componentDidMount() {}
 
   _renderItem({ item, index }) {
     return <BookmarkCell key={index} item={item} />;

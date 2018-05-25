@@ -2,7 +2,6 @@ import { localStorage, sorter } from '../helpers';
 
 // bookmark actions
 const bookmarkActions = {
-  // login status
   updateBookmarks: list => ({
     type: 'UPDATE_BOOKMARKS',
     list,
