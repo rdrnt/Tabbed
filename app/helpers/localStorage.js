@@ -20,6 +20,7 @@ console.log(realm.path);
 
 realm.objects('Bookmark').addListener((event, changes) => {
   console.log('event', event, changes);
+  const { deletions, insertions, modifications } = changes;
 });
 
 const localStorage = {

@@ -20,7 +20,6 @@ class Bookmarks extends Component {
     };
 
     console.log(this.props);
-    this.props.dispatch(bookmarkActions.fetchBookmarks());
   }
 
   static navigatorButtons = {
@@ -48,15 +47,20 @@ class Bookmarks extends Component {
     }
   }
 
-  componentDidMount() {
-    localStorage.getAllBookmarks(bookmarks => {
-      // sorter.sortForSections(bookmarks);
-      sorter.sortForSections(bookmarks, sortedBookmarks => {
-        this.setState({
-          bookmarks: sortedBookmarks,
-        });
+  static getDerivedStateFromProps(nextProps, previousState) {
+    // Sorting the bookmarks as they come in
+    if (nextProps.bookmarks.list) {
+      sorter.sortForSections(nextProps.bookmarks.list, marks => {
+        previousState.bookmarks = marks;
       });
-    });
+    }
+    return previousState;
+  }
+
+  componentDidMount() {
+    const { dispatch } = this.props;
+
+    dispatch(bookmarkActions.fetchBookmarks());
   }
 
   render() {
