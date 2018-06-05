@@ -54,10 +54,6 @@ class BookmarkList extends Component {
   }
 }
 
-BookmarkList.propTypes = {
-  bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,
-};
-
 const sectionStyles = {
   title: {
     fontWeight: 'bold',
@@ -76,6 +72,10 @@ const sectionStyles = {
     backgroundColor: globals.colors.lighterGrey,
     flex: 1,
   },
+};
+
+BookmarkList.propTypes = {
+  bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,
 };
 
 export default connect()(BookmarkList);

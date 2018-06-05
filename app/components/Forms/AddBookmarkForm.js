@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
+
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import t from 'tcomb-form-native';
 
-import { globals, localStorage } from '../helpers';
-
-import { bookmarkActions } from '../actions';
-
-import AddBookmarkForm from '../components/Forms/AddBookmarkForm';
+import { globals } from '../../helpers';
 
 const Form = t.form.Form;
 
@@ -48,49 +45,23 @@ const options = {
   },
 };
 
-class NewBookmark extends Component {
+class AddBookmarkForm extends Component {
   constructor(props) {
     super(props);
-
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-
-    console.log('NewBookmark props', this.props);
   }
-
-  static navigatorButtons = {
-    rightButtons: [
-      {
-        id: 'save',
-        systemItem: 'save',
-      },
-    ],
-  };
-
-  onNavigatorEvent(event) {
-    const { navigator } = this.props;
-
-    if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'save') {
-        this._onSubmit();
-      }
-    }
-  }
-
-  getFormValues(values) {}
 
   _onSubmit() {
     const { dispatch } = this.props;
     const value = this._form.getValue();
     if (value) {
       console.log('adding new bookmark');
-      dispatch(bookmarkActions.addBookmark());
     }
   }
 
   render() {
     return (
-      <View style={styles.container}>
-        <AddBookmarkForm />
+      <View>
+        <Form ref={c => (this._form = c)} type={Bookmark} options={options} />
       </View>
     );
   }
@@ -105,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect()(NewBookmark);
+export default connect()(AddBookmarkForm);

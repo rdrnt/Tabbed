@@ -18,8 +18,6 @@ class Bookmarks extends Component {
     this.state = {
       bookmarks: [],
     };
-
-    console.log(this.props);
   }
 
   static navigatorButtons = {
