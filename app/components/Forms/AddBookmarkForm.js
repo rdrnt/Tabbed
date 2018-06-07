@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
+import PropTypes from 'prop-types';
 import t from 'tcomb-form-native';
 
 import { globals } from '../../helpers';
@@ -58,10 +58,20 @@ class AddBookmarkForm extends Component {
     }
   }
 
+  _onChange(value) {
+    console.log('AddComponentForm onChange', value);
+  }
+
   render() {
     return (
       <View>
-        <Form ref={c => (this._form = c)} type={Bookmark} options={options} />
+        <Form
+          ref={c => (this._form = c)}
+          type={Bookmark}
+          options={options}
+          onSubmit={this.props.onSubmit}
+          onChange={this.props.setFormValues}
+        />
       </View>
     );
   }
@@ -75,5 +85,10 @@ const styles = StyleSheet.create({
     backgroundColor: globals.colors.lighterGrey,
   },
 });
+
+AddBookmarkForm.propTypes = {
+  setFormValues: PropTypes.func.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+};
 
 export default connect()(AddBookmarkForm);

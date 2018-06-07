@@ -54,7 +54,14 @@ class NewBookmark extends Component {
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
+    this.setFormValues = this.setFormValues.bind(this);
+    this.onSubmit = this.onSubmit.bind(this);
+
     console.log('NewBookmark props', this.props);
+
+    this.state = {
+      formValues: {},
+    };
   }
 
   static navigatorButtons = {
@@ -76,21 +83,33 @@ class NewBookmark extends Component {
     }
   }
 
-  getFormValues(values) {}
+  setFormValues(values) {
+    console.log(values);
+    this.setState({
+      formValues: values,
+    });
+  }
 
-  _onSubmit() {
-    const { dispatch } = this.props;
+  onSubmit() {
+    console.log('this is it');
+    /*
     const value = this._form.getValue();
     if (value) {
       console.log('adding new bookmark');
-      dispatch(bookmarkActions.addBookmark());
     }
+    */
+
+    const { dispatch } = this.props;
+    dispatch(bookmarkActions.addBookmark());
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <AddBookmarkForm />
+        <AddBookmarkForm
+          setFormValues={this.setFormValues}
+          onSubmit={this.onSubmit}
+        />
       </View>
     );
   }

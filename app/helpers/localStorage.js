@@ -32,8 +32,8 @@ const localStorage = {
   addNewBookmark: () => {
     realm.write(() => {
       realm.create('Bookmark', {
-        title: 'Bobby',
-        url: 'https://burger.com',
+        title: 'Christine is cool',
+        url: 'https://bird.com',
         isPrivate: false,
         categories: ['food'],
       });
