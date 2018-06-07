@@ -18,9 +18,18 @@ const realm = new Realm({
 
 console.log(realm.path);
 
-realm.objects('Bookmark').addListener((event, changes) => {
-  console.log('event', event, changes);
+realm.objects('Bookmark').addListener((bookmarks, changes) => {
+  console.log('changes', changes);
   const { deletions, insertions, modifications } = changes;
+
+  changes.insertions.forEach(index => {
+    let modifiedMarks = bookmarks[index];
+    console.log('modifiedMarks', modifiedMarks);
+  });
+
+  console.log('localStorage Realm: deletion', deletions);
+  console.log('localStorage Realm: insertions', insertions);
+  console.log('localStorage Realm: modifications', modifications);
 });
 
 const localStorage = {
@@ -29,12 +38,12 @@ const localStorage = {
     callback(allBookmarks);
   },
 
-  addNewBookmark: () => {
+  addNewBookmark: bookmark => {
     realm.write(() => {
       realm.create('Bookmark', {
-        title: 'Christine is cool',
-        url: 'https://bird.com',
-        isPrivate: false,
+        title: bookmark.title,
+        url: bookmark.url,
+        isPrivate: bookmark.isPrivate || false,
         categories: ['food'],
       });
     });

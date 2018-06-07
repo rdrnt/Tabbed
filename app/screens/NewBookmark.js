@@ -54,13 +54,17 @@ class NewBookmark extends Component {
 
     this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
 
-    this.setFormValues = this.setFormValues.bind(this);
+    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     console.log('NewBookmark props', this.props);
 
     this.state = {
-      formValues: {},
+      formValues: {
+        title: '',
+        url: '',
+        isPrivate: false,
+      },
     };
   }
 
@@ -74,16 +78,14 @@ class NewBookmark extends Component {
   };
 
   onNavigatorEvent(event) {
-    const { navigator } = this.props;
-
     if (event.type == 'NavBarButtonPress') {
       if (event.id == 'save') {
-        this._onSubmit();
+        this.onSubmit();
       }
     }
   }
 
-  setFormValues(values) {
+  onChange(values) {
     console.log(values);
     this.setState({
       formValues: values,
@@ -91,23 +93,20 @@ class NewBookmark extends Component {
   }
 
   onSubmit() {
-    console.log('this is it');
-    /*
-    const value = this._form.getValue();
-    if (value) {
-      console.log('adding new bookmark');
-    }
-    */
+    console.log('addBookmark onSubmit');
 
+    const { formValues } = this.state;
     const { dispatch } = this.props;
-    dispatch(bookmarkActions.addBookmark());
+
+    dispatch(bookmarkActions.addBookmark(formValues));
   }
 
   render() {
     return (
       <View style={styles.container}>
         <AddBookmarkForm
-          setFormValues={this.setFormValues}
+          ref={c => (this._form = c)}
+          onChange={this.onChange}
           onSubmit={this.onSubmit}
         />
       </View>

@@ -50,6 +50,7 @@ class AddBookmarkForm extends Component {
     super(props);
   }
 
+  /*
   _onSubmit() {
     const { dispatch } = this.props;
     const value = this._form.getValue();
@@ -57,10 +58,7 @@ class AddBookmarkForm extends Component {
       console.log('adding new bookmark');
     }
   }
-
-  _onChange(value) {
-    console.log('AddComponentForm onChange', value);
-  }
+  */
 
   render() {
     return (
@@ -70,7 +68,7 @@ class AddBookmarkForm extends Component {
           type={Bookmark}
           options={options}
           onSubmit={this.props.onSubmit}
-          onChange={this.props.setFormValues}
+          onChange={this.props.onChange}
         />
       </View>
     );
@@ -87,7 +85,7 @@ const styles = StyleSheet.create({
 });
 
 AddBookmarkForm.propTypes = {
-  setFormValues: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired,
   onSubmit: PropTypes.func.isRequired,
 };
 
