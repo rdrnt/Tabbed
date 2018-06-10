@@ -6,11 +6,15 @@ export default class BookmarkViewer extends Component {
     super(props);
 
     console.log('BookmarkViewer props', props);
+
+    this.state = {
+      isPreview: props.isPreview,
+    };
   }
   render() {
     return (
       <View style={styles.container}>
-        <Text>Doggyo!</Text>
+        <Text>{this.state.isPreview ? 'Preview' : 'Not a preview'} </Text>
       </View>
     );
   }
