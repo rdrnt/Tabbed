@@ -25,6 +25,13 @@ class BookmarkList extends Component {
       screen: 'tabbed.BookmarkViewer',
       title: item.title,
       previewView: is3DTouch ? this.previewRefs[item.title.toString()] : null,
+      previewActions: [
+        {
+          title: 'Foo',
+          style: 'selected', // none, selected, destructive
+          actions: [{ title: 'Bar' }],
+        },
+      ],
       passProps: {
         titties: JSON.parse(JSON.stringify(item)),
       },
