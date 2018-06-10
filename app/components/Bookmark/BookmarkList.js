@@ -13,25 +13,21 @@ class BookmarkList extends Component {
     super(props);
 
     this.onCellPress = this.onCellPress.bind(this);
-    this.onCellPressIn = this.onCellPressIn.bind(this);
     this.renderItem = this.renderItem.bind(this);
 
     // This is where we'll store the refs to the bookmark cells
     this.previewRefs = [];
   }
 
-  onCellPress(item) {
+  onCellPress(item, is3DTouch = false) {
+    console.log(item);
     this.props.navigator.push({
       screen: 'tabbed.BookmarkViewer',
-    });
-  }
-
-  onCellPressIn(item) {
-    this.props.navigator.push({
-      screen: 'tabbed.BookmarkViewer',
-      previewCommit: true,
-      previewHeight: 400,
-      previewView: this.previewRefs[item.title.toString()],
+      title: item.title,
+      previewView: is3DTouch ? this.previewRefs[item.title.toString()] : null,
+      passProps: {
+        titties: JSON.parse(JSON.stringify(item)),
+      },
     });
   }
 
@@ -42,7 +38,6 @@ class BookmarkList extends Component {
         key={index}
         item={item}
         onPress={this.onCellPress}
-        onPressIn={this.onCellPressIn}
       />
     );
   }

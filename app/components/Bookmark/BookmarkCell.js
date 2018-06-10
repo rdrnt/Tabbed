@@ -16,11 +16,11 @@ class BookmarkCell extends React.PureComponent {
   }
 
   render() {
-    const { item, onPress, onPressIn } = this.props;
+    const { item, onPress } = this.props;
     return (
       <TouchableHighlight
-        onPress={() => onPress(item)}
-        onPressIn={() => onPressIn(item)}
+        onPress={() => onPress(item, false)}
+        onPressIn={() => onPress(item, true)}
       >
         <View style={cellStyles.cell}>
           <Image
