@@ -55,7 +55,8 @@ class NewBookmark extends Component {
     const { formValues } = this.state;
     const { dispatch } = this.props;
 
-    // dispatch(bookmarkActions.addBookmark(formValues));
+    // Adding the bookmark
+    dispatch(bookmarkActions.addBookmark(formValues));
 
     // go back to main screen
     this.props.navigator.popToRoot();
