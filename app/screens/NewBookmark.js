@@ -1,52 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
-import t from 'tcomb-form-native';
-
-import { globals, localStorage } from '../helpers';
-
-import { bookmarkActions } from '../actions';
+import { globals } from '../helpers';
 
 import AddBookmarkForm from '../components/Forms/AddBookmarkForm';
-
-const Form = t.form.Form;
-
-const Bookmark = t.struct({
-  title: t.String,
-  url: t.String,
-  isPrivate: t.Boolean,
-});
-
-const formStyles = {
-  ...Form.stylesheet,
-  textbox: {
-    normal: {
-      borderWidth: 0,
-      backgroundColor: globals.colors.white,
-    },
-  },
-  controlLabel: {
-    normal: {
-      backgroundColor: globals.colors.white,
-      width: '100%',
-    },
-  },
-  checkbox: {
-    normal: {
-      backgroundColor: '#E5F213',
-    },
-  },
-};
-
-const options = {
-  auto: 'placeholders',
-  stylesheet: formStyles,
-  fields: {
-    isPrivate: {
-      label: 'Private',
-    },
-  },
-};
 
 class NewBookmark extends Component {
   constructor(props) {
