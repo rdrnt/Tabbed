@@ -11,10 +11,10 @@ const defaultState = {
 
 const middleware = applyMiddleware(thunkMiddleware);
 
-export default function configureStore(initialState) {
-  return createStore(
-    rootReducer,
-    defaultState,
-    composeWithDevTools(middleware)
-  );
-}
+const store = createStore(
+  rootReducer,
+  defaultState,
+  composeWithDevTools(middleware)
+);
+
+export default store;

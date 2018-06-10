@@ -25,6 +25,7 @@ realm.objects('Bookmark').addListener((bookmarks, changes) => {
   changes.insertions.forEach(index => {
     let modifiedMarks = bookmarks[index];
     console.log('modifiedMarks', modifiedMarks);
+    console.log(modifiedMarks.title);
   });
 
   console.log('localStorage Realm: deletion', deletions);

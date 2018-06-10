@@ -1,7 +1,5 @@
 import { localStorage, sorter } from '../helpers';
 
-import store from '../store';
-
 // bookmark actions
 const bookmarkActions = {
   updateBookmarks: list => ({
@@ -11,6 +9,7 @@ const bookmarkActions = {
 
   addBookmark: bookmark => dispatch => {
     localStorage.addNewBookmark(bookmark);
+    dispatch(bookmarkActions.fetchBookmarks());
   },
 
   fetchBookmarks: () => dispatch => {
