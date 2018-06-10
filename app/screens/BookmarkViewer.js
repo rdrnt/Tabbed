@@ -1,19 +1,16 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-import BookmarkList from '../components/Bookmark/BookmarkList';
-
-export default class Settings extends Component {
+export default class BookmarkViewer extends Component {
   constructor(props) {
     super(props);
 
-    console.log('BookmarViewer props', props);
+    console.log('BookmarkViewer props', props);
   }
-
   render() {
     return (
-      <View>
-        <Text>Penis</Text>
+      <View style={styles.container}>
+        <Text>Doggyo!</Text>
       </View>
     );
   }

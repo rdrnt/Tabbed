@@ -6,15 +6,45 @@ import { connect } from 'react-redux';
 import { globals } from '../../helpers';
 
 import BookmarkCell from './BookmarkCell';
-import bookmarks from '../../reducers/bookmarks';
+import BookmarkPreview from './BookmarkPreviewPeek';
 
 class BookmarkList extends Component {
   constructor(props) {
     super(props);
+
+    this.onCellPress = this.onCellPress.bind(this);
+    this.onCellPressIn = this.onCellPressIn.bind(this);
+    this.renderItem = this.renderItem.bind(this);
+
+    // This is where we'll store the refs to the bookmark cells
+    this.previewRefs = [];
   }
 
-  _renderItem({ item, index }) {
-    return <BookmarkCell key={index} item={item} />;
+  onCellPress(item) {
+    this.props.navigator.push({
+      screen: 'tabbed.BookmarkViewer',
+    });
+  }
+
+  onCellPressIn(item) {
+    this.props.navigator.push({
+      screen: 'tabbed.BookmarkViewer',
+      previewCommit: true,
+      previewHeight: 400,
+      previewView: this.previewRefs[item.title.toString()],
+    });
+  }
+
+  renderItem({ item, index }) {
+    return (
+      <BookmarkCell
+        ref={ref => (this.previewRefs[item.title.toString()] = ref)}
+        key={index}
+        item={item}
+        onPress={this.onCellPress}
+        onPressIn={this.onCellPressIn}
+      />
+    );
   }
 
   _renderSectionHeader({ section }) {
@@ -43,7 +73,7 @@ class BookmarkList extends Component {
 
     return (
       <SectionList
-        renderItem={this._renderItem}
+        renderItem={this.renderItem}
         renderSectionHeader={this._renderSectionHeader}
         ItemSeparatorComponent={this._renderitemSeparator}
         ListEmptyComponent={this._renderComponentIfNoItems}
@@ -76,6 +106,7 @@ const sectionStyles = {
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  navigator: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 export default connect()(BookmarkList);

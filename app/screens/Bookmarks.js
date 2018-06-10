@@ -64,7 +64,10 @@ class Bookmarks extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <BookmarkList bookmarks={this.state.bookmarks} />
+        <BookmarkList
+          bookmarks={this.state.bookmarks}
+          navigator={this.props.navigator}
+        />
       </View>
     );
   }

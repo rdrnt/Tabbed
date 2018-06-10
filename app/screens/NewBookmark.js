@@ -65,11 +65,7 @@ class NewBookmark extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <AddBookmarkForm
-          ref={c => (this._form = c)}
-          onChange={this.onChange}
-          onSubmit={this.onSubmit}
-        />
+        <AddBookmarkForm onChange={this.onChange} onSubmit={this.onSubmit} />
       </View>
     );
   }

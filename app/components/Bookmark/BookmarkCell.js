@@ -10,22 +10,32 @@ import PropTypes from 'prop-types';
 
 import globals from '../../helpers/globals';
 
-const BookmarkCell = ({ item }) => {
-  return (
-    <TouchableHighlight onPress={() => console.log('pressed')}>
-      <View style={cellStyles.cell}>
-        <Image
-          style={cellStyles.image}
-          source={{
-            uri:
-              'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
-          }}
-        />
-        <Text style={cellStyles.title}>{item.title}</Text>
-      </View>
-    </TouchableHighlight>
-  );
-};
+class BookmarkCell extends React.PureComponent {
+  constructor(props) {
+    super(props);
+  }
+
+  render() {
+    const { item, onPress, onPressIn } = this.props;
+    return (
+      <TouchableHighlight
+        onPress={() => onPress(item)}
+        onPressIn={() => onPressIn(item)}
+      >
+        <View style={cellStyles.cell}>
+          <Image
+            style={cellStyles.image}
+            source={{
+              uri:
+                'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
+            }}
+          />
+          <Text style={cellStyles.title}>{item.title}</Text>
+        </View>
+      </TouchableHighlight>
+    );
+  }
+}
 
 const cellStyles = StyleSheet.create({
   cell: {

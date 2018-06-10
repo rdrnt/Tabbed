@@ -3,6 +3,7 @@ import { Navigation } from 'react-native-navigation';
 import Bookmarks from './screens/Bookmarks';
 import Settings from './screens/Settings';
 import NewBookmark from './screens/NewBookmark';
+import BookmarkViewer from './screens/BookmarkViewer';
 
 function registerScreens(store, Provider) {
   Navigation.registerComponent(
@@ -20,6 +21,12 @@ function registerScreens(store, Provider) {
   Navigation.registerComponent(
     'tabbed.NewBookmark',
     () => NewBookmark,
+    store,
+    Provider
+  );
+  Navigation.registerComponent(
+    'tabbed.BookmarkViewer',
+    () => BookmarkViewer,
     store,
     Provider
   );
