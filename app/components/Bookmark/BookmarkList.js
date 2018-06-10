@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 import { globals } from '../../helpers';
 
 import BookmarkCell from './BookmarkCell';
-import BookmarkPreview from './BookmarkPreviewPeek';
 
 class BookmarkList extends Component {
   constructor(props) {
