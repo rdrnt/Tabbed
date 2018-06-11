@@ -1,7 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
 
-import { colors } from '../../styles';
+import { colors, typography } from '../../styles';
 
 const BookmarkViewerHeader = ({ url, image }) => {
   return (
@@ -12,7 +12,7 @@ const BookmarkViewerHeader = ({ url, image }) => {
           uri: image,
         }}
       />
-      <Text>{url}</Text>
+      <Text style={headerStyles.title}>{url}</Text>
     </View>
   );
 };
@@ -30,6 +30,10 @@ const headerStyles = StyleSheet.create({
     backgroundColor: '#F5F3A4',
     alignSelf: 'center',
     marginVertical: 15,
+  },
+  title: {
+    ...StyleSheet.flatten(typography.title1),
+    marginBottom: 15,
   },
 });
 
