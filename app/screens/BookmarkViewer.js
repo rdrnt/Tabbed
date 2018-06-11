@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import BookmarkViewerHeader from '../components/BookmarkViewer/Header';
+import PrivateView from '../components/PrivateView';
 
 export default class BookmarkViewer extends Component {
   constructor(props) {
@@ -11,6 +12,8 @@ export default class BookmarkViewer extends Component {
   }
   render() {
     const { item } = this.props;
+    return <PrivateView />;
+    /*
     return (
       <View style={styles.container}>
         <BookmarkViewerHeader
@@ -19,6 +22,7 @@ export default class BookmarkViewer extends Component {
         />
       </View>
     );
+    */
   }
 }
 
