@@ -32,7 +32,7 @@ class BookmarkList extends Component {
         },
       ],
       passProps: {
-        titties: JSON.parse(JSON.stringify(item)),
+        item: JSON.parse(JSON.stringify(item)),
       },
     });
   }
