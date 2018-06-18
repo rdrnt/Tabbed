@@ -12,8 +12,8 @@ export default class BookmarkViewer extends Component {
   }
   render() {
     const { item } = this.props;
-    return <PrivateView />;
-    /*
+    // return <PrivateView />;
+
     return (
       <View style={styles.container}>
         <BookmarkViewerHeader
@@ -22,7 +22,6 @@ export default class BookmarkViewer extends Component {
         />
       </View>
     );
-    */
   }
 }
 

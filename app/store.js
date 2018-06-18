@@ -5,9 +5,7 @@ import { composeWithDevTools } from 'redux-devtools-extension';
 
 import rootReducer from './reducers';
 
-const defaultState = {
-  bookmarks: [],
-};
+import defaultState from './data/defaultState';
 
 const middleware = applyMiddleware(thunkMiddleware);
 

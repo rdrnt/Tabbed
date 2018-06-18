@@ -30,7 +30,9 @@ class BookmarkCell extends React.PureComponent {
                 'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
             }}
           />
-          <Text style={cellStyles.title}>{item.title}</Text>
+          <View style={cellStyles.info}>
+            <Text style={cellStyles.title}>{item.title}</Text>
+          </View>
         </View>
       </TouchableHighlight>
     );
@@ -45,10 +47,13 @@ const cellStyles = StyleSheet.create({
     height: 50,
     paddingHorizontal: 16,
   },
+  info: {
+    padding: 5,
+    width: '100%',
+    height: '100%',
+  },
   title: {
-    paddingLeft: 5,
     fontWeight: 'bold',
-    alignSelf: 'center',
   },
   image: {
     height: 30,
