@@ -2,75 +2,125 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import PropTypes from 'prop-types';
-import t from 'tcomb-form-native';
+import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form';
 
 import { globals } from '../../helpers';
 
-const Form = t.form.Form;
-
-const Bookmark = t.struct({
-  title: t.String,
-  url: t.String,
-  isPrivate: t.Boolean,
-});
-
-const formStyles = {
-  ...Form.stylesheet,
-  textbox: {
-    normal: {
-      borderWidth: 0,
-      backgroundColor: globals.colors.white,
-    },
-  },
-  controlLabel: {
-    normal: {
-      backgroundColor: globals.colors.white,
-      width: '100%',
-    },
-  },
-  checkbox: {
-    normal: {
-      backgroundColor: '#E5F213',
-    },
-  },
-};
-
-const options = {
-  auto: 'placeholders',
-  stylesheet: formStyles,
-  fields: {
-    isPrivate: {
-      label: 'Private',
-    },
-  },
-};
+// The fields are
+// Title
+// URL
+// categories
+// isPrivate
 
 class AddBookmarkForm extends Component {
   constructor(props) {
     super(props);
   }
 
-  /*
-  _onSubmit() {
-    const { dispatch } = this.props;
-    const value = this._form.getValue();
-    if (value) {
-      console.log('adding new bookmark');
-    }
-  }
-  */
-
   render() {
     return (
-      <View>
-        <Form
-          ref={c => (this._form = c)}
-          type={Bookmark}
-          options={options}
-          onSubmit={this.props.onSubmit}
-          onChange={this.props.onChange}
+      <GiftedForm
+        formName="signupForm" // GiftedForm instances that use the same name will also share the same states
+        clearOnClose={false} // delete the values of the form when unmounted
+        defaults={
+          {
+            /*
+          username: 'Farid',
+          'gender{M}': true,
+          password: 'abcdefg',
+          country: 'FR',
+          birthday: new Date(((new Date()).getFullYear() - 18)+''),
+          */
+          }
+        }
+        validators={{
+          title: {
+            title: 'Title',
+            validate: [
+              {
+                validator: 'isLength',
+                arguments: [1, 23],
+                message:
+                  '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters',
+              },
+            ],
+          },
+          username: {
+            title: 'Username',
+            validate: [
+              {
+                validator: 'isLength',
+                arguments: [3, 16],
+                message:
+                  '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters',
+              },
+              {
+                validator: 'matches',
+                arguments: /^[a-zA-Z0-9]*$/,
+                message: '{TITLE} can contains only alphanumeric characters',
+              },
+            ],
+          },
+          password: {
+            title: 'Password',
+            validate: [
+              {
+                validator: 'isLength',
+                arguments: [6, 16],
+                message:
+                  '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters',
+              },
+            ],
+          },
+          emailAddress: {
+            title: 'Email address',
+            validate: [
+              {
+                validator: 'isLength',
+                arguments: [6, 255],
+              },
+              {
+                validator: 'isEmail',
+              },
+            ],
+          },
+        }}
+      >
+        <GiftedForm.SeparatorWidget />
+
+        <GiftedForm.TextInputWidget
+          name="title" // mandatory
+          title="Title"
+          placeholder="cool dog"
+          clearButtonMode="while-editing"
         />
-      </View>
+
+        <GiftedForm.SeparatorWidget />
+
+        <GiftedForm.ErrorsWidget />
+
+        <GiftedForm.SubmitWidget
+          title="Sign up"
+          onSubmit={(
+            isValid,
+            values,
+            validationResults,
+            postSubmit = null,
+            modalNavigator = null
+          ) => {
+            if (isValid === true) {
+              // prepare object
+              /* Implement the request to your server using values variable
+              ** then you can do:
+              ** postSubmit(); // disable the loader
+              ** postSubmit(['An error occurred, please try again']); // disable the loader and display an error message
+              ** postSubmit(['Username already taken', 'Email already taken']); // disable the loader and display an error message
+              ** GiftedFormManager.reset('signupForm'); // clear the states of the form manually. 'signupForm' is the formName used
+              */
+            }
+          }}
+        />
+      </GiftedForm>
     );
   }
 }

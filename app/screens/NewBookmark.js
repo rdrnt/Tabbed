@@ -55,6 +55,8 @@ class NewBookmark extends Component {
     const { formValues } = this.state;
     const { dispatch } = this.props;
 
+    console.log('Adding new form with values', formValues);
+
     // Adding the bookmark
     dispatch(bookmarkActions.addBookmark(formValues));
 
