@@ -45,9 +45,28 @@ const localStorage = {
         title: bookmark.title,
         url: bookmark.url,
         isPrivate: bookmark.isPrivate || false,
-        categories: ['food'],
+        categories: ['food', 'animals', 'doggies'],
       });
     });
+  },
+
+  getAllBookmarkCategories(callback) {
+    // We'll store the unique categories from each bookmark in here
+    const uniqueCategories = [];
+    // Getting all the bookmarks
+    this.getAllBookmarks(bookmarks => {
+      // Going through each bookmark
+      bookmarks.forEach(bookmark => {
+        // Going through each bookmark category
+        bookmark.categories.forEach(category => {
+          // If it's not already in our unique categories, add it
+          if (!uniqueCategories.includes(category.toString())) {
+            uniqueCategories.push(category);
+          }
+        });
+      });
+    });
+    callback(uniqueCategories);
   },
 };
 

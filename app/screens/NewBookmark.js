@@ -5,69 +5,48 @@ import { globals } from '../helpers';
 
 import AddBookmarkForm from '../components/Forms/AddBookmarkForm';
 
+import { bookmarkActions } from '../actions';
+
 class NewBookmark extends Component {
   constructor(props) {
     super(props);
 
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-
-    this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
     console.log('NewBookmark props', this.props);
 
     this.state = {
-      formValues: {
-        title: '',
-        url: '',
-        isPrivate: false,
-      },
+      categories: [],
     };
   }
 
-  static navigatorButtons = {
-    rightButtons: [
-      {
-        id: 'save',
-        systemItem: 'save',
-      },
-    ],
-  };
+  onSubmit(
+    isValid,
+    values,
+    validationResults,
+    postSubmit = null,
+    modalNavigator = null
+  ) {
+    console.log('addBookmark onSubmit', isValid, values);
 
-  onNavigatorEvent(event) {
-    if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'save') {
-        this.onSubmit();
-      }
+    const { dispatch } = this.props;
+
+    if (isValid === true) {
+      console.log('Adding new form with values', values);
+      // Adding the bookmark
+      dispatch(bookmarkActions.addBookmark(values));
+
+      // go back to main screen
+      this.props.navigator.popToRoot();
     }
   }
 
-  onChange(values) {
-    console.log(values);
-    this.setState({
-      formValues: values,
-    });
-  }
-
-  onSubmit() {
-    console.log('addBookmark onSubmit');
-
-    const { formValues } = this.state;
-    const { dispatch } = this.props;
-
-    console.log('Adding new form with values', formValues);
-
-    // Adding the bookmark
-    dispatch(bookmarkActions.addBookmark(formValues));
-
-    // go back to main screen
-    this.props.navigator.popToRoot();
-  }
-
   render() {
+    const { categories } = this.state;
+
     return (
       <View style={styles.container}>
-        <AddBookmarkForm onChange={this.onChange} onSubmit={this.onSubmit} />
+        <AddBookmarkForm onSubmit={this.onSubmit} categories={categories} />
       </View>
     );
   }
