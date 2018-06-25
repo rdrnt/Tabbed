@@ -87,11 +87,12 @@ class AddBookmarkForm extends Component {
 
         <GiftedForm.GroupWidget title="Categories">
           <GiftedForm.SelectWidget name="gender" title="Gender" multiple={true}>
-            {['dog', 'cat', 'fat', 'slim'].map(category => {
+            {this.props.categories.map((category, index) => {
               return (
                 <GiftedForm.OptionWidget
                   title={category.toString()}
                   value={category.toString()}
+                  key={index}
                 />
               );
             })}

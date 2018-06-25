@@ -7,6 +7,8 @@ import AddBookmarkForm from '../components/Forms/AddBookmarkForm';
 
 import { bookmarkActions } from '../actions';
 
+import { localStorage } from '../helpers';
+
 class NewBookmark extends Component {
   constructor(props) {
     super(props);
@@ -18,6 +20,14 @@ class NewBookmark extends Component {
     this.state = {
       categories: [],
     };
+  }
+
+  componentDidMount() {
+    localStorage.getAllBookmarkCategories(categories => {
+      this.setState({
+        categories,
+      });
+    });
   }
 
   onSubmit(
