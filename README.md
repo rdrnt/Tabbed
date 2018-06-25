@@ -5,7 +5,9 @@
 - Sync bookmarks
 - Settings
 - Ability to add bookmark
-- Create bookmarks class
+  - ~~Create form layout~~
+  - OnSubmit validation
+  - categories have better implementation
 - Dark mode
 - Searching / Sorting
 
@@ -14,5 +16,3 @@
 - Using Realm for strorage
 
 - React-Native-Typography for design stuff
-
-- 
