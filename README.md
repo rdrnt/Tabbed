@@ -10,6 +10,7 @@
   - categories have better implementation
 - Dark mode
 - Searching / Sorting
+- Fix GiftedForm not working fully correctly
 
 # Libraries
 

@@ -44,7 +44,7 @@ class NewBookmark extends Component {
     if (isValid === true) {
       console.log('Adding new form with values', values);
       // Adding the bookmark
-      dispatch(bookmarkActions.addBookmark(values));
+      // dispatch(bookmarkActions.addBookmark(values));
 
       // go back to main screen
       this.props.navigator.popToRoot();
