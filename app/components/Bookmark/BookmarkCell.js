@@ -32,6 +32,7 @@ class BookmarkCell extends React.PureComponent {
           />
           <View style={cellStyles.info}>
             <Text style={cellStyles.title}>{item.title}</Text>
+            <Text>{item.url}</Text>
           </View>
         </View>
       </TouchableHighlight>
