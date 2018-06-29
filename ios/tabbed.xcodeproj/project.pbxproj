@@ -598,7 +598,6 @@
 				3DAD3EAB1DF850E9000B6D8A /* libcxxreact.a */,
 				3DAD3EAD1DF850E9000B6D8A /* libjschelpers.a */,
 				3DAD3EAF1DF850E9000B6D8A /* libjschelpers.a */,
-<<<<<<< ours
 				BFAB8EF8205E1C0000C92CB1 /* libjsinspector.a */,
 				BFAB8EFA205E1C0000C92CB1 /* libjsinspector-tvOS.a */,
 				BFAB8EFC205E1C0000C92CB1 /* libthird-party.a */,
@@ -607,7 +606,6 @@
 				BFAB8F02205E1C0000C92CB1 /* libdouble-conversion.a */,
 				BFAB8F04205E1C0000C92CB1 /* libprivatedata.a */,
 				BFAB8F06205E1C0000C92CB1 /* libprivatedata-tvOS.a */,
-=======
 				2DF0FFDF2056DD460020B375 /* libjsinspector.a */,
 				2DF0FFE12056DD460020B375 /* libjsinspector-tvOS.a */,
 				2DF0FFE32056DD460020B375 /* libthird-party.a */,
@@ -616,7 +614,6 @@
 				2DF0FFE92056DD460020B375 /* libdouble-conversion.a */,
 				2DF0FFEB2056DD460020B375 /* libprivatedata.a */,
 				2DF0FFED2056DD460020B375 /* libprivatedata-tvOS.a */,
->>>>>>> theirs
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -1590,15 +1587,9 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "tabbed-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-<<<<<<< ours
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
->>>>>>> theirs
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tabbed-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1621,15 +1612,9 @@
 				GCC_NO_COMMON_BLOCKS = YES;
 				INFOPLIST_FILE = "tabbed-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-<<<<<<< ours
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-=======
 				OTHER_LDFLAGS = (
 					"-ObjC",
 					"-lc++",
->>>>>>> theirs
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.tabbed-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
