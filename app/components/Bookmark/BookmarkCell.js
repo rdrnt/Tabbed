@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
+import BookmarkAvatar from './BookmarkAvatar';
+
 import globals from '../../helpers/globals';
 
 class BookmarkCell extends React.PureComponent {
@@ -23,13 +25,9 @@ class BookmarkCell extends React.PureComponent {
         onLongPress={() => onPress(item, true)}
       >
         <View style={cellStyles.cell}>
-          <Image
-            style={cellStyles.image}
-            source={{
-              uri:
-                'https://img.itch.zone/aW1nLzcyNzgxNy5wbmc=/original/8AJNx%2B.png',
-            }}
-          />
+          <View style={cellStyles.image}>
+            <BookmarkAvatar title={item.title} />
+          </View>
           <View style={cellStyles.info}>
             <Text style={cellStyles.title}>{item.title}</Text>
             <Text>{item.url}</Text>
@@ -45,7 +43,7 @@ const cellStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    height: 50,
+    height: 75,
     paddingHorizontal: 16,
   },
   info: {
@@ -57,10 +55,9 @@ const cellStyles = StyleSheet.create({
     fontWeight: 'bold',
   },
   image: {
-    height: 30,
-    width: 30,
-    borderRadius: 15,
-    backgroundColor: globals.colors.lightGrey,
+    height: 50,
+    width: 50,
+    borderRadius: 25,
     alignSelf: 'center',
   },
 });
