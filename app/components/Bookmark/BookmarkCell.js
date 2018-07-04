@@ -49,7 +49,7 @@ const cellStyles = StyleSheet.create({
   info: {
     padding: 5,
     width: '100%',
-    height: '100%',
+    alignSelf: 'center',
   },
   title: {
     fontWeight: 'bold',
@@ -59,6 +59,7 @@ const cellStyles = StyleSheet.create({
     width: 50,
     borderRadius: 25,
     alignSelf: 'center',
+    marginRight: 5,
   },
 });
 
