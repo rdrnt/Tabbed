@@ -19,17 +19,16 @@ const AddBookmarkForm = ({ onSubmit }) => (
   <GiftedForm
     formName={BOOKMARK_FORM_NAME} // GiftedForm instances that use the same name will also share the same states
     clearOnClose={false} // delete the values of the form when unmounted
-    defaults={
-      {
-        /*
+    defaults={{
+      /*
           username: 'Farid',
           'gender{M}': true,
           password: 'abcdefg',
           country: 'FR',
           birthday: new Date(((new Date()).getFullYear() - 18)+''),
           */
-      }
-    }
+      isPrivate: false,
+    }}
     validators={{
       title: {
         title: 'Title',
