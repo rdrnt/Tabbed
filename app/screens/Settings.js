@@ -9,7 +9,7 @@ export default class Settings extends Component {
   render() {
     return (
       <View>
-        <Text>Penis</Text>
+        <Text>Settings panel</Text>
       </View>
     );
   }
