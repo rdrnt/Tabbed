@@ -11,6 +11,13 @@
 - Dark mode
 - Searching / Sorting
 - Fix GiftedForm not working fully correctly
+- URL's have the following properties
+  - Title
+  - URL
+  - Date created
+  - ~~Categories~~
+  - ~~Image (AKA Favicon)~~
+  - isPrivate
 
 # Libraries
 
