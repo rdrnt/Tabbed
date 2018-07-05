@@ -44,12 +44,12 @@ const localStorage = {
       realm.create('Bookmark', {
         title: bookmark.title,
         url: bookmark.url,
-        isPrivate: bookmark.isPrivate || false,
-        categories: ['food', 'animals', 'doggies'],
+        isPrivate: bookmark.isPrivate,
       });
     });
   },
 
+  /*
   getAllBookmarkCategories(callback) {
     // We'll store the unique categories from each bookmark in here
     const uniqueCategories = [];
@@ -68,6 +68,7 @@ const localStorage = {
     });
     callback(uniqueCategories);
   },
+  */
 };
 
 export default localStorage;

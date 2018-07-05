@@ -16,18 +16,16 @@ class NewBookmark extends Component {
     this.onSubmit = this.onSubmit.bind(this);
 
     console.log('NewBookmark props', this.props);
-
-    this.state = {
-      categories: [],
-    };
   }
 
   componentDidMount() {
+    /*
     localStorage.getAllBookmarkCategories(categories => {
       this.setState({
         categories,
       });
     });
+    */
   }
 
   onSubmit(
@@ -52,11 +50,9 @@ class NewBookmark extends Component {
   }
 
   render() {
-    const { categories } = this.state;
-
     return (
       <View style={styles.container}>
-        <AddBookmarkForm onSubmit={this.onSubmit} categories={categories} />
+        <AddBookmarkForm onSubmit={this.onSubmit} />
       </View>
     );
   }

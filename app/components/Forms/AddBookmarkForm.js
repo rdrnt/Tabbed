@@ -15,7 +15,7 @@ import { globals, isValidUrl } from '../../helpers';
 // We use this to identify the form in GiftedFormManager
 const BOOKMARK_FORM_NAME = 'addBookmarkForm';
 
-const AddBookmarkForm = ({ onSubmit, categories }) => (
+const AddBookmarkForm = ({ onSubmit }) => (
   <GiftedForm
     formName={BOOKMARK_FORM_NAME} // GiftedForm instances that use the same name will also share the same states
     clearOnClose={false} // delete the values of the form when unmounted
@@ -96,6 +96,7 @@ const AddBookmarkForm = ({ onSubmit, categories }) => (
     <GiftedForm.SeparatorWidget />
 
     {/* Categories */}
+    {/*
     <GiftedForm.GroupWidget title="Categories">
       <GiftedForm.SelectWidget
         name="categories"
@@ -114,6 +115,7 @@ const AddBookmarkForm = ({ onSubmit, categories }) => (
         })}
       </GiftedForm.SelectWidget>
     </GiftedForm.GroupWidget>
+    */}
 
     <GiftedForm.ErrorsWidget />
 
@@ -132,7 +134,6 @@ const styles = StyleSheet.create({
 
 AddBookmarkForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.string).isRequired,
 };
 
 export default connect()(AddBookmarkForm);
