@@ -6,7 +6,7 @@ const BookmarkSchema = {
     title: 'string',
     url: 'string',
     isPrivate: { type: 'bool', default: false },
-    categories: 'string[]',
+    dateCreated: { type: 'date', default: new Date() },
   },
 };
 const BookmarkSchemaVersion = 1;
