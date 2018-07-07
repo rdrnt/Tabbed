@@ -35,7 +35,7 @@ const AddBookmarkForm = ({ onSubmit }) => (
         validate: [
           {
             validator: 'isLength',
-            arguments: [1, 23],
+            arguments: [1, 500],
             message:
               '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters',
           },
