@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, Text, View, Button } from 'react-native';
 import PropTypes from 'prop-types';
@@ -9,7 +9,6 @@ import { globals, isValidUrl } from '../../helpers';
 // The fields are
 // Title
 // URL
-// categories
 // isPrivate
 
 // We use this to identify the form in GiftedFormManager
@@ -19,6 +18,7 @@ const AddBookmarkForm = ({ onSubmit }) => (
   <GiftedForm
     formName={BOOKMARK_FORM_NAME} // GiftedForm instances that use the same name will also share the same states
     clearOnClose={false} // delete the values of the form when unmounted
+    onValueChange={this.handleFormValueChange}
     defaults={{
       /*
           username: 'Farid',
@@ -75,8 +75,9 @@ const AddBookmarkForm = ({ onSubmit }) => (
     <GiftedForm.TextInputWidget
       name="title"
       title="Title"
-      placeholder="cool dog"
+      placeholder="Dog with cute eyes"
       clearButtonMode="while-editing"
+      autoCapitalize={'words'}
     />
     <GiftedForm.SeparatorWidget />
     {/* URL */}
