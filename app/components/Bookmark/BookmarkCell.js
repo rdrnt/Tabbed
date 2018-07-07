@@ -10,8 +10,6 @@ import PropTypes from 'prop-types';
 
 import BookmarkAvatar from './BookmarkAvatar';
 
-import globals from '../../helpers/globals';
-
 class BookmarkCell extends React.PureComponent {
   constructor(props) {
     super(props);
@@ -29,7 +27,15 @@ class BookmarkCell extends React.PureComponent {
             <BookmarkAvatar title={item.title} />
           </View>
           <View style={cellStyles.info}>
-            <Text style={cellStyles.title}>{item.title}</Text>
+            <View style={{ flexDirection: 'row' }}>
+              <Text style={cellStyles.title}>{item.title}</Text>
+              {item.isPrivate && (
+                <Image
+                  style={cellStyles.isPrivate}
+                  source={require('../../assets/images/eyewithline.png')}
+                />
+              )}
+            </View>
             <Text>{item.url}</Text>
           </View>
         </View>
@@ -47,19 +53,26 @@ const cellStyles = StyleSheet.create({
     paddingHorizontal: 16,
   },
   info: {
+    flex: 1,
     padding: 5,
-    width: '100%',
     alignSelf: 'center',
   },
   title: {
     fontWeight: 'bold',
   },
+
   image: {
     height: 50,
     width: 50,
     borderRadius: 25,
     alignSelf: 'center',
     marginRight: 5,
+  },
+  isPrivate: {
+    height: 10,
+    width: 15,
+    marginLeft: 5,
+    alignSelf: 'center',
   },
 });
 
