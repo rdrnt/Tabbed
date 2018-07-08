@@ -75,7 +75,7 @@ const AddBookmarkForm = ({ onSubmit }) => (
     <GiftedForm.TextInputWidget
       name="title"
       title="Title"
-      placeholder="Dog with cute eyes"
+      placeholder="Pinterest Recipe For Cake"
       clearButtonMode="while-editing"
       autoCapitalize={'words'}
     />
