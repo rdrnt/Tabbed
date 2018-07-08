@@ -2,7 +2,7 @@
   "extends": ["airbnb","plugin:prettier/recommended"],
   "plugins": [
       "react",
-      "jsx-a11y",
+      "jsx-a11y"
   ],
   "rules": {
     "new-cap": [
@@ -13,6 +13,7 @@
           "List"
         ]
       }
-    ]
+    ],
+    "react/jsx-filename-extension": ["error", { "extensions": [".js", ".jsx"] }]
   }
 }
