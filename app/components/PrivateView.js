@@ -1,6 +1,8 @@
 import React from 'react';
 import { View, Text } from 'react-native';
 
+import { biometrics } from '../helpers';
+
 class PrivateView extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +10,14 @@ class PrivateView extends React.Component {
     this.state = {
       isUnlocked: false,
     };
+  }
+
+  componentDidMount() {
+    biometrics.authenticate(isUnlocked => {
+      this.setState({
+        isUnlocked: isUnlocked,
+      });
+    });
   }
 
   render() {
