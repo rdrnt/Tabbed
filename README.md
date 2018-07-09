@@ -31,6 +31,7 @@ I would love contributions! Right now I'm mainly looking for help with stuff in 
 
 ### Pages
 - Settings
+- Onboarding
 
 ## Libraries
 
