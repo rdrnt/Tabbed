@@ -1,10 +1,7 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button } from 'react-native';
 import PropTypes from 'prop-types';
-import { GiftedForm, GiftedFormManager } from 'react-native-gifted-form';
-
-import { globals, isValidUrl } from '../../helpers';
+import { GiftedForm } from 'react-native-gifted-form';
 
 // The fields are
 // Title
@@ -52,7 +49,7 @@ const AddBookmarkForm = ({ onSubmit }) => (
           {
             validator: (...args) => {
               // args [0] = the url
-              var pattern = new RegExp(
+              const pattern = new RegExp(
                 '^(https?:\\/\\/)?' +
                   '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' +
                   '((\\d{1,3}\\.){3}\\d{1,3}))' +
@@ -77,7 +74,7 @@ const AddBookmarkForm = ({ onSubmit }) => (
       title="Title"
       placeholder="Pinterest Recipe For Cake"
       clearButtonMode="while-editing"
-      autoCapitalize={'words'}
+      autoCapitalize="words"
     />
     <GiftedForm.SeparatorWidget />
     {/* URL */}
@@ -85,7 +82,7 @@ const AddBookmarkForm = ({ onSubmit }) => (
       name="url"
       title="URL"
       placeholder="https://google.ca"
-      value={'https://'}
+      value="https://"
       clearButtonMode="while-editing"
     />
     <GiftedForm.SeparatorWidget />
@@ -122,15 +119,6 @@ const AddBookmarkForm = ({ onSubmit }) => (
     <GiftedForm.SubmitWidget title="Save" onSubmit={onSubmit} />
   </GiftedForm>
 );
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: globals.colors.lighterGrey,
-  },
-});
 
 AddBookmarkForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,

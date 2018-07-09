@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { AppState, View } from 'react-native';
 
@@ -42,3 +43,7 @@ class AppStateUpdate extends React.Component {
 }
 
 export default AppStateUpdate;
+
+AppStateUpdate.propTypes = {
+  children: PropTypes.element.isRequired,
+};
