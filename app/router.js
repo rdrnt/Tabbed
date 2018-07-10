@@ -5,6 +5,8 @@ import Settings from './screens/Settings';
 import NewBookmark from './screens/NewBookmark';
 import BookmarkViewer from './screens/BookmarkViewer';
 
+import BookmarkViewerHeader from './components/BookmarkViewer/Header';
+
 function registerScreens(store, Provider) {
   Navigation.registerComponent(
     'tabbed.Bookmarks',

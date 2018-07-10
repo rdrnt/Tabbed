@@ -9,7 +9,7 @@ const BookmarkAvatar = ({ title, size }) => (
 
 BookmarkAvatar.propTypes = {
   title: PropTypes.string.isRequired,
-  size: PropTypes.number,
+  size: PropTypes.string,
 };
 
 BookmarkAvatar.defaultProps = {

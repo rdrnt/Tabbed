@@ -3,38 +3,25 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 
 import { colors, typography } from '../../styles';
 
-const BookmarkViewerHeader = ({ url, image }) => {
-  return (
-    <View style={headerStyles.container}>
-      <Image
-        style={headerStyles.image}
-        source={{
-          uri: image,
-        }}
-      />
-      <Text style={headerStyles.title}>{url}</Text>
-    </View>
-  );
-};
+import BookmarkAvatar from '../Bookmark/BookmarkAvatar';
 
 const headerStyles = StyleSheet.create({
   container: {
-    backgroundColor: colors.lighterGrey,
+    backgroundColor: '#FFFFFF',
     width: '100%',
-    alignItems: 'center',
-  },
-  image: {
-    height: 50,
-    width: 50,
-    borderRadius: 25,
-    backgroundColor: '#F5F3A4',
-    alignSelf: 'center',
-    marginVertical: 15,
+    padding: 20,
+    flex: 1,
+    flexDirection: 'row',
   },
   title: {
     ...StyleSheet.flatten(typography.title1),
-    marginBottom: 15,
   },
 });
 
+const BookmarkViewerHeader = ({ item }) => (
+  <View style={headerStyles.container}>
+    <BookmarkAvatar title={item.title} size="75" />
+    <Text style={headerStyles.title}>{item.url}</Text>
+  </View>
+);
 export default BookmarkViewerHeader;

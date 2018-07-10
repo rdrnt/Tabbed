@@ -5,7 +5,7 @@ const PrivateView = ({ children, isUnlocked }) =>
 
 PrivateView.propTypes = {
   isUnlocked: PropTypes.bool.isRequired,
-  children: PropTypes.element.isRequired,
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
 };
 
 export default PrivateView;

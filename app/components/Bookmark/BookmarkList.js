@@ -22,7 +22,6 @@ class BookmarkList extends Component {
     console.log(item);
     this.props.navigator.push({
       screen: 'tabbed.BookmarkViewer',
-      title: item.title,
       previewView: is3DTouch ? this.previewRefs[item.title.toString()] : null,
       previewActions: [
         {
@@ -34,18 +33,10 @@ class BookmarkList extends Component {
       passProps: {
         item: JSON.parse(JSON.stringify(item)),
       },
+      navigatorStyle: {
+        largeTitle: false,
+      },
     });
-  }
-
-  renderItem({ item, index }) {
-    return (
-      <BookmarkCell
-        ref={ref => (this.previewRefs[item.title.toString()] = ref)}
-        key={index}
-        item={item}
-        onPress={this.onCellPress}
-      />
-    );
   }
 
   _renderSectionHeader({ section }) {
@@ -66,6 +57,17 @@ class BookmarkList extends Component {
         <Text>No items available.</Text>
         <Text>Click here to add a new bookmark.</Text>
       </View>
+    );
+  }
+
+  renderItem({ item, index }) {
+    return (
+      <BookmarkCell
+        ref={ref => (this.previewRefs[item.title.toString()] = ref)}
+        key={index}
+        item={item}
+        onPress={this.onCellPress}
+      />
     );
   }
 

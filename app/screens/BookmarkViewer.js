@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text } from 'react-native';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
-// import BookmarkViewerHeader from '../components/BookmarkViewer/Header';
+import BookmarkViewerHeader from '../components/BookmarkViewer/Header';
 import PrivateView from '../components/PrivateView';
 
 import { biometrics } from '../helpers';
 
-export default class BookmarkViewer extends Component {
+class BookmarkViewer extends Component {
   constructor(props) {
     super(props);
 
@@ -32,6 +34,7 @@ export default class BookmarkViewer extends Component {
     const { isUnlocked } = this.state;
     return (
       <PrivateView isUnlocked={isUnlocked}>
+        <BookmarkViewerHeader item={item} />
         <Text>
           {isUnlocked} lol {item.title}
         </Text>
@@ -46,3 +49,10 @@ const styles = StyleSheet.create({
     width: '100%',
   },
 });
+
+BookmarkViewer.propTypes = {
+  item: PropTypes.objectOf(PropTypes.shape).isRequired,
+  navigator: PropTypes.objectOf(PropTypes.shape).isRequired,
+};
+
+export default connect()(BookmarkViewer);
