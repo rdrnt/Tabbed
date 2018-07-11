@@ -1,27 +1,41 @@
 import React from 'react';
-import { View, Text, StyleSheet, Image } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import PropTypes from 'prop-types';
 
-import { colors, typography } from '../../styles';
+import { typography } from '../../styles';
 
 import BookmarkAvatar from '../Bookmark/BookmarkAvatar';
 
 const headerStyles = StyleSheet.create({
   container: {
-    backgroundColor: '#FFFFFF',
     width: '100%',
-    padding: 20,
-    flex: 1,
-    flexDirection: 'row',
+  },
+  info: {
+    marginBottom: 20,
+    alignSelf: 'center',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
   title: {
     ...StyleSheet.flatten(typography.title1),
+  },
+  subtitle: {
+    ...StyleSheet.flatten(typography.subhead),
   },
 });
 
 const BookmarkViewerHeader = ({ item }) => (
   <View style={headerStyles.container}>
-    <BookmarkAvatar title={item.title} size="75" />
-    <Text style={headerStyles.title}>{item.url}</Text>
+    <View style={headerStyles.info}>
+      <BookmarkAvatar title={item.title} size="75" />
+      <Text style={headerStyles.title}>{item.title}</Text>
+      <Text style={headerStyles.subtitle}>{item.url}</Text>
+    </View>
   </View>
 );
+
+BookmarkViewerHeader.propTypes = {
+  item: PropTypes.objectOf(PropTypes.shape).isRequired,
+};
+
 export default BookmarkViewerHeader;

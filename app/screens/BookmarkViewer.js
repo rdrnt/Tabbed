@@ -9,6 +9,15 @@ import PrivateView from '../components/PrivateView';
 import { biometrics } from '../helpers';
 
 class BookmarkViewer extends Component {
+  static navigatorButtons = {
+    leftButtons: [
+      {
+        title: 'Close',
+        id: 'close',
+      },
+    ],
+  };
+
   constructor(props) {
     super(props);
 
@@ -35,9 +44,6 @@ class BookmarkViewer extends Component {
     return (
       <PrivateView isUnlocked={isUnlocked}>
         <BookmarkViewerHeader item={item} />
-        <Text>
-          {isUnlocked} lol {item.title}
-        </Text>
       </PrivateView>
     );
   }

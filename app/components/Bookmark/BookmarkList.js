@@ -7,29 +7,38 @@ import { globals } from '../../helpers';
 
 import BookmarkCell from './BookmarkCell';
 
+const sectionStyles = {
+  title: {
+    fontWeight: 'bold',
+  },
+  view: {
+    backgroundColor: globals.colors.lightGrey,
+    paddingHorizontal: 16,
+  },
+  seperator: {
+    backgroundColor: globals.colors.lightGrey,
+    height: 1,
+    marginLeft: 16,
+  },
+  noItems: {
+    height: '100%',
+    backgroundColor: globals.colors.lighterGrey,
+    flex: 1,
+  },
+};
+
 class BookmarkList extends Component {
   constructor(props) {
     super(props);
 
     this.onCellPress = this.onCellPress.bind(this);
     this.renderItem = this.renderItem.bind(this);
-
-    // This is where we'll store the refs to the bookmark cells
-    this.previewRefs = [];
   }
 
-  onCellPress(item, is3DTouch = false) {
-    console.log(item);
-    this.props.navigator.push({
+  onCellPress(item) {
+    this.props.navigator.showModal({
       screen: 'tabbed.BookmarkViewer',
-      previewView: is3DTouch ? this.previewRefs[item.title.toString()] : null,
-      previewActions: [
-        {
-          title: 'Foo',
-          style: 'selected', // none, selected, destructive
-          actions: [{ title: 'Bar' }],
-        },
-      ],
+      animationType: 'slide-up',
       passProps: {
         item: JSON.parse(JSON.stringify(item)),
       },
@@ -61,14 +70,7 @@ class BookmarkList extends Component {
   }
 
   renderItem({ item, index }) {
-    return (
-      <BookmarkCell
-        ref={ref => (this.previewRefs[item.title.toString()] = ref)}
-        key={index}
-        item={item}
-        onPress={this.onCellPress}
-      />
-    );
+    return <BookmarkCell key={index} item={item} onPress={this.onCellPress} />;
   }
 
   render() {
@@ -86,26 +88,6 @@ class BookmarkList extends Component {
     );
   }
 }
-
-const sectionStyles = {
-  title: {
-    fontWeight: 'bold',
-  },
-  view: {
-    backgroundColor: globals.colors.lightGrey,
-    paddingHorizontal: 16,
-  },
-  seperator: {
-    backgroundColor: globals.colors.lightGrey,
-    height: 1,
-    marginLeft: 16,
-  },
-  noItems: {
-    height: '100%',
-    backgroundColor: globals.colors.lighterGrey,
-    flex: 1,
-  },
-};
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,

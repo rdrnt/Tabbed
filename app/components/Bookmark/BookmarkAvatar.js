@@ -13,7 +13,7 @@ BookmarkAvatar.propTypes = {
 };
 
 BookmarkAvatar.defaultProps = {
-  size: 50,
+  size: '50',
 };
 
 export default BookmarkAvatar;
