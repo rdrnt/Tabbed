@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text } from 'react-native';
+import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import BookmarkViewerHeader from '../components/BookmarkViewer/Header';
 import BookmarkViewerList from '../components/BookmarkViewer/List';
+
 import PrivateView from '../components/PrivateView';
 
 import { biometrics } from '../helpers';
@@ -32,11 +33,8 @@ class BookmarkViewer extends Component {
   }
 
   onNavigatorEvent(event) {
-    // this is the onPress handler for the two buttons together
     if (event.type == 'NavBarButtonPress') {
-      // this is the event type for button presses
       if (event.id == 'close') {
-        // this is the same id field from the static navigatorButtons definition
         this.props.navigator.dismissModal();
       }
     }

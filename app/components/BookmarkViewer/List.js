@@ -3,6 +3,9 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
+import { colors } from '../../styles';
+import { dateUtils } from '../../helpers';
+
 const Cell = styled.View`
   height: 50px;
   width: 100%;
@@ -11,15 +14,32 @@ const Cell = styled.View`
   align-items: center;
   border-bottom-width: ${props => (props.showBottomBorder ? 0.5 : 0)};
   border-bottom-color: grey;
-  margin-left: 10px;
+  margin-left: 16px;
+`;
+
+const RightText = styled.Text`
+  color: ${colors.grey};
+  margin-right: 32px;
 `;
 
 const BookmarkViewerItem = ({ left, right, showBottomBorder }) => (
   <Cell showBottomBorder={showBottomBorder}>
     <Text>{left}</Text>
-    <Text style={{ marginRight: 20 }}>{right}</Text>
+    <RightText>{right}</RightText>
   </Cell>
 );
+
+BookmarkViewerItem.propTypes = {
+  left: PropTypes.string.isRequired,
+  right: PropTypes.string.isRequired,
+  showBottomBorder: PropTypes.bool,
+};
+
+BookmarkViewerItem.defaultProps = {
+  showBottomBorder: true,
+};
+
+/* BookmarkViewerList stuff goes here */
 
 const List = styled.View`
   border: 0.5px solid grey;
@@ -32,22 +52,12 @@ const BookmarkViewerList = ({ item }) => (
   <List>
     <BookmarkViewerItem left="Private" right={item.isPrivate.toString()} />
     <BookmarkViewerItem
-      left="Date created"
-      right={item.dateCreated.toString()}
+      left="Date Created"
+      right={dateUtils.formatDate(item.dateCreated)}
       showBottomBorder={false}
     />
   </List>
 );
-
-BookmarkViewerItem.propTypes = {
-  left: PropTypes.string.isRequired,
-  right: PropTypes.string.isRequired,
-  showBottomBorder: PropTypes.bool,
-};
-
-BookmarkViewerItem.defaultProps = {
-  showBottomBorder: true,
-};
 
 BookmarkViewerList.propTypes = {
   item: PropTypes.objectOf(PropTypes.shape).isRequired,

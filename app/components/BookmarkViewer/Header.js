@@ -19,9 +19,6 @@ const headerStyles = StyleSheet.create({
   title: {
     ...StyleSheet.flatten(typography.title1),
   },
-  subtitle: {
-    ...StyleSheet.flatten(typography.subhead),
-  },
 });
 
 const BookmarkViewerHeader = ({ item }) => (
@@ -29,7 +26,6 @@ const BookmarkViewerHeader = ({ item }) => (
     <View style={headerStyles.info}>
       <BookmarkAvatar title={item.title} size="75" />
       <Text style={headerStyles.title}>{item.title}</Text>
-      <Text style={headerStyles.subtitle}>{item.url}</Text>
     </View>
   </View>
 );

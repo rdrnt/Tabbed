@@ -3,3 +3,4 @@ export { default as localStorage } from './localStorage';
 export { default as sorter } from './sorter';
 export { default as biometrics } from './biometrics';
 export { default as isValidUrl } from './isValidUrl';
+export { default as dateUtils } from './dateUtils';

@@ -12,6 +12,14 @@ const typography = {
   footnote: human.footnote,
   caption1: human.caption1,
   caption2: human.caption2,
+  cellTitle: {
+    fontSize: 12,
+    color: '#9b9b9b',
+    paddingLeft: 10,
+    paddingRight: 10,
+    marginBottom: 5,
+    marginTop: 10,
+  },
 };
 
 export default typography;
