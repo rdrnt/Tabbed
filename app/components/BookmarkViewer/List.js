@@ -13,7 +13,7 @@ const Cell = styled.View`
   flex-direction: row;
   align-items: center;
   border-bottom-width: ${props => (props.showBottomBorder ? 0.5 : 0)};
-  border-bottom-color: grey;
+  border-bottom-color: ${colors.grey};
   margin-left: 16px;
 `;
 
@@ -42,7 +42,7 @@ BookmarkViewerItem.defaultProps = {
 /* BookmarkViewerList stuff goes here */
 
 const List = styled.View`
-  border: 0.5px solid grey;
+  border: 0.5px solid ${colors.grey};
   border-left-width: 0;
   border-right-width: 0;
   margin-top: 50px;

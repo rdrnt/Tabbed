@@ -18,6 +18,12 @@ class BookmarkViewer extends Component {
         id: 'close',
       },
     ],
+    rightButtons: [
+      {
+        title: 'Edit',
+        id: 'edit',
+      },
+    ],
   };
 
   constructor(props) {
