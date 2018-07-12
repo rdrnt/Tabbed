@@ -23,6 +23,8 @@ const BookmarkViewerItem = ({ left, right, showBottomBorder }) => (
 
 const List = styled.View`
   border: 0.5px solid grey;
+  border-left-width: 0;
+  border-right-width: 0;
   margin-top: 50px;
 `;
 
@@ -45,6 +47,10 @@ BookmarkViewerItem.propTypes = {
 
 BookmarkViewerItem.defaultProps = {
   showBottomBorder: true,
+};
+
+BookmarkViewerList.propTypes = {
+  item: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 export default BookmarkViewerList;
