@@ -1,20 +1,7 @@
-import React, { Component } from 'react';
-import { Navigation } from 'react-native-navigation';
-import { Provider } from 'react-redux';
-import { NativeRouter, Route } from 'react-router-native';
+import React from 'react';
 
-import store from './app/store';
-import { registerScreens, tabs } from './app/router';
+import Template from './app/Template';
 
-registerScreens(store, Provider);
+const App = () => <Template />;
 
-Navigation.startTabBasedApp({
-  tabs: tabs,
-  appStyle: {
-    largeTitle: true,
-  },
-  tabsStyle: {
-    tabBarSelectedButtonColor: '#000000',
-    tabBarSelectedLabelColor: '#000000',
-  },
-});
+export default App;

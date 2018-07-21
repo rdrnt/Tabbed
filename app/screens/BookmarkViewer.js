@@ -11,39 +11,12 @@ import PrivateView from '../components/PrivateView';
 import { biometrics } from '../helpers';
 
 class BookmarkViewer extends Component {
-  static navigatorButtons = {
-    leftButtons: [
-      {
-        title: 'Close',
-        id: 'close',
-      },
-    ],
-    rightButtons: [
-      {
-        title: 'Edit',
-        id: 'edit',
-      },
-    ],
-  };
-
   constructor(props) {
     super(props);
-
-    console.log('BookmarkViewer props', props);
 
     this.state = {
       isUnlocked: true,
     };
-
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-  }
-
-  onNavigatorEvent(event) {
-    if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'close') {
-        this.props.navigator.dismissModal();
-      }
-    }
   }
 
   componentDidMount() {
@@ -57,8 +30,11 @@ class BookmarkViewer extends Component {
   }
 
   render() {
-    const { item } = this.props;
+    const { navigation } = this.props;
     const { isUnlocked } = this.state;
+
+    const item = navigation.getParam('item', {});
+
     return (
       <PrivateView isUnlocked={isUnlocked}>
         <BookmarkViewerHeader item={item} />
@@ -68,16 +44,8 @@ class BookmarkViewer extends Component {
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-  },
-});
-
 BookmarkViewer.propTypes = {
-  item: PropTypes.objectOf(PropTypes.shape).isRequired,
-  navigator: PropTypes.objectOf(PropTypes.shape).isRequired,
+  navigation: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 export default connect()(BookmarkViewer);

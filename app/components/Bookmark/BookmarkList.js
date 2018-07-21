@@ -33,18 +33,13 @@ class BookmarkList extends Component {
 
     this.onCellPress = this.onCellPress.bind(this);
     this.renderItem = this.renderItem.bind(this);
+
+    console.log(this.props);
   }
 
   onCellPress(item) {
-    this.props.navigator.showModal({
-      screen: 'tabbed.BookmarkViewer',
-      animationType: 'slide-up',
-      passProps: {
-        item: JSON.parse(JSON.stringify(item)),
-      },
-      navigatorStyle: {
-        largeTitle: false,
-      },
+    this.props.navigation.navigate('BookmarkViewer', {
+      item,
     });
   }
 
@@ -91,7 +86,6 @@ class BookmarkList extends Component {
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,
-  navigator: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
 export default connect()(BookmarkList);

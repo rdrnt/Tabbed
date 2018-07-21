@@ -6,44 +6,22 @@ import BookmarkList from '../components/Bookmark/BookmarkList';
 
 import { bookmarkActions } from '../actions';
 
-import { localStorage, sorter } from '../helpers';
+import { sorter } from '../helpers';
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    width: '100%',
+    height: '100%',
+    backgroundColor: '#FFFFFF',
+  },
+});
 
 // Home page AKA bookmark page
 class Bookmarks extends Component {
-  constructor(props) {
-    super(props);
-
-    this.props.navigator.setOnNavigatorEvent(this.onNavigatorEvent.bind(this));
-
-    this.state = {
-      bookmarks: [],
-    };
-  }
-
-  static navigatorButtons = {
-    rightButtons: [
-      {
-        id: 'add',
-        systemItem: 'add',
-      },
-    ],
+  static navigationOptions = {
+    title: 'Home',
   };
-
-  onNavigatorEvent(event) {
-    const { navigator } = this.props;
-
-    if (event.type == 'NavBarButtonPress') {
-      if (event.id == 'add') {
-        navigator.push({
-          screen: 'tabbed.NewBookmark',
-          title: 'New Bookmark',
-          navigatorStyle: {
-            largeTitle: false,
-          },
-        });
-      }
-    }
-  }
 
   static getDerivedStateFromProps(nextProps, previousState) {
     // Sorting the bookmarks as they come in
@@ -55,6 +33,14 @@ class Bookmarks extends Component {
     return previousState;
   }
 
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      bookmarks: [],
+    };
+  }
+
   componentDidMount() {
     const { dispatch } = this.props;
 
@@ -62,24 +48,17 @@ class Bookmarks extends Component {
   }
 
   render() {
+    const { bookmarks } = this.state;
     return (
       <View style={styles.container}>
         <BookmarkList
-          bookmarks={this.state.bookmarks}
-          navigator={this.props.navigator}
+          bookmarks={bookmarks}
+          navigation={this.props.navigation}
         />
       </View>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-  },
-});
 
 function mapStateToProps(state) {
   return {
