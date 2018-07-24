@@ -1,5 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { GiftedForm } from 'react-native-gifted-form';
 
@@ -9,9 +8,9 @@ import { GiftedForm } from 'react-native-gifted-form';
 // isPrivate
 
 // We use this to identify the form in GiftedFormManager
-const BOOKMARK_FORM_NAME = 'addBookmarkForm';
+const BOOKMARK_FORM_NAME = 'newBookmarkForm';
 
-const AddBookmarkForm = ({ onSubmit }) => (
+const NewBookmarkForm = ({ onSubmit }) => (
   <GiftedForm
     formName={BOOKMARK_FORM_NAME} // GiftedForm instances that use the same name will also share the same states
     clearOnClose={false} // delete the values of the form when unmounted
@@ -120,8 +119,8 @@ const AddBookmarkForm = ({ onSubmit }) => (
   </GiftedForm>
 );
 
-AddBookmarkForm.propTypes = {
+NewBookmarkForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,
 };
 
-export default connect()(AddBookmarkForm);
+export default NewBookmarkForm;

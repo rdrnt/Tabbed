@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View, Button } from 'react-native';
-import { globals } from '../helpers';
+import { StyleSheet, View } from 'react-native';
 
-import AddBookmarkForm from '../components/Forms/AddBookmarkForm';
+import NewBookmarkForm from '../components/Forms/NewBookmarkForm';
 
 import { bookmarkActions } from '../actions';
 
-import { localStorage } from '../helpers';
+import { globals } from '../helpers';
 
 class NewBookmark extends Component {
   constructor(props) {
@@ -45,14 +44,13 @@ class NewBookmark extends Component {
       dispatch(bookmarkActions.addBookmark(values));
 
       // go back to main screen
-      this.props.navigator.popToRoot();
     }
   }
 
   render() {
     return (
       <View style={styles.container}>
-        <AddBookmarkForm onSubmit={this.onSubmit} />
+        <NewBookmarkForm onSubmit={this.onSubmit} />
       </View>
     );
   }

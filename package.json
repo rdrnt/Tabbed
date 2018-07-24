@@ -9,6 +9,7 @@
     "test": "jest"
   },
   "dependencies": {
+    "babel-eslint": "^8.2.6",
     "date-fns": "^1.29.0",
     "eslint": "^4.19.0",
     "eslint-config-airbnb": "^16.1.0",
@@ -27,6 +28,7 @@
     "react-native-user-avatar": "^1.0.3",
     "react-native-vector-icons": "^4.6.0",
     "react-navigation": "^2.6.2",
+    "react-navigation-header-buttons": "^2.0.1",
     "react-redux": "^5.0.7",
     "react-router": "^4.2.0",
     "react-router-native": "^4.2.0",

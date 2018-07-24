@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
+import { Item, DefaultHeaderButtons } from '../components/HeaderButtons';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
 
@@ -19,8 +20,30 @@ const styles = StyleSheet.create({
 
 // Home page AKA bookmark page
 class Bookmarks extends Component {
-  static navigationOptions = {
-    title: 'Home',
+  // For some reason we have to do this weird syntax
+  // because if we don't add a return, we get linting and parsing issues
+  static navigationOptions = ({ navigation }) => {
+    /*
+    return {
+      title: 'Home',
+      headerRight: (
+        <Icon
+          name="ios-add"
+          size={44}
+          color={colors.blueTint}
+          onPress={() => navigation.navigate('NewBookmark')}
+        />
+      ),
+    };
+    */
+    return {
+      title: 'Bookmarks',
+      headerRight: (
+        <DefaultHeaderButtons>
+          <Item iconName="ios-add" onPress={() => console.warn('add')} />
+        </DefaultHeaderButtons>
+      ),
+    };
   };
 
   static getDerivedStateFromProps(nextProps, previousState) {

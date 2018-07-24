@@ -8,6 +8,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import Bookmarks from './screens/Bookmarks';
 import BookmarkViewer from './screens/BookmarkViewer';
 import Settings from './screens/Settings';
+import NewBookmark from './screens/NewBookmark';
 
 const BookmarkStack = createStackNavigator({
   Bookmark: {
@@ -15,6 +16,9 @@ const BookmarkStack = createStackNavigator({
   },
   BookmarkViewer: {
     screen: BookmarkViewer,
+  },
+  NewBookmark: {
+    screen: NewBookmark,
   },
 });
 

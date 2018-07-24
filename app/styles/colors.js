@@ -5,6 +5,7 @@ const colors = {
   lighterGrey: iOSColors.customGray, // #efeff4
   lightGrey: iOSColors.lightGray,
   grey: iOSColors.gray,
+  blueTint: '#007AFF',
 };
 
 export default colors;
