@@ -40,7 +40,10 @@ class Bookmarks extends Component {
       title: 'Bookmarks',
       headerRight: (
         <DefaultHeaderButtons>
-          <Item iconName="ios-add" onPress={() => console.warn('add')} />
+          <Item
+            iconName="ios-add"
+            onPress={() => navigation.navigate('NewBookmark')}
+          />
         </DefaultHeaderButtons>
       ),
     };
