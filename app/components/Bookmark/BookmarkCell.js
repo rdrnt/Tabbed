@@ -29,12 +29,7 @@ class BookmarkCell extends React.PureComponent {
           <View style={cellStyles.info}>
             <View style={{ flexDirection: 'row' }}>
               <Text style={cellStyles.title}>{item.title}</Text>
-              {item.isPrivate && (
-                <Image
-                  style={cellStyles.isPrivate}
-                  source={require('../../assets/images/eyewithline.png')}
-                />
-              )}
+              {item.isPrivate && <Image style={cellStyles.isPrivate} />}
             </View>
             <Text>{item.url}</Text>
           </View>
