@@ -10,7 +10,7 @@ const DefaultHeaderButton = props => (
     {...props}
     IconComponent={Ionicons}
     iconSize={23}
-    color="blue"
+    color="white"
   />
 );
 

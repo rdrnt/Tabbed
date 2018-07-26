@@ -6,3 +6,4 @@ export { default as biometrics } from './biometrics';
 export { default as isValidUrl } from './isValidUrl';
 export { default as dateUtils } from './dateUtils';
 export { default as getHostName } from './getHostName';
+export { default as getHeaderInset } from './getHeaderInset';

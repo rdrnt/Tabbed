@@ -3,6 +3,8 @@ import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import GradientContainer from '../components/GradientContainer';
+
 import BookmarkViewerHeader from '../components/BookmarkViewer/Header';
 import BookmarkViewerList from '../components/BookmarkViewer/List';
 
@@ -36,10 +38,12 @@ class BookmarkViewer extends Component {
     const item = navigation.getParam('item', {});
 
     return (
-      <PrivateView isUnlocked={isUnlocked}>
-        <BookmarkViewerHeader item={item} />
-        <BookmarkViewerList item={item} />
-      </PrivateView>
+      <GradientContainer>
+        <PrivateView isUnlocked={isUnlocked}>
+          <BookmarkViewerHeader item={item} />
+          <BookmarkViewerList item={item} />
+        </PrivateView>
+      </GradientContainer>
     );
   }
 }

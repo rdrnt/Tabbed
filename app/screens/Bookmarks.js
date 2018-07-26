@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { StyleSheet, View } from 'react-native';
+
+import GradientContainer from '../components/GradientContainer';
+
 import { Item, DefaultHeaderButtons } from '../components/HeaderButtons';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
@@ -22,20 +25,8 @@ const styles = StyleSheet.create({
 class Bookmarks extends Component {
   // For some reason we have to do this weird syntax
   // because if we don't add a return, we get linting and parsing issues
+
   static navigationOptions = ({ navigation }) => {
-    /*
-    return {
-      title: 'Home',
-      headerRight: (
-        <Icon
-          name="ios-add"
-          size={44}
-          color={colors.blueTint}
-          onPress={() => navigation.navigate('NewBookmark')}
-        />
-      ),
-    };
-    */
     return {
       title: 'Bookmarks',
       headerRight: (
@@ -76,12 +67,12 @@ class Bookmarks extends Component {
   render() {
     const { bookmarks } = this.state;
     return (
-      <View style={styles.container}>
+      <GradientContainer>
         <BookmarkList
           bookmarks={bookmarks}
           navigation={this.props.navigation}
         />
-      </View>
+      </GradientContainer>
     );
   }
 }
