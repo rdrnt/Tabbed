@@ -25,6 +25,7 @@ const bookmarkUtils = {
             );
             callback(svgIcon[0].src);
           } else {
+            // if we only have one icon, or no SVG, just return the first logo the API could find
             callback(data.icons[0].src);
           }
         }
