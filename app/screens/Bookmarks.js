@@ -7,7 +7,7 @@ import BookmarkList from '../components/Bookmark/BookmarkList';
 
 import { bookmarkActions } from '../actions';
 
-import { sorter } from '../helpers';
+import { sorter, bookmarkUtils } from '../helpers';
 
 const styles = StyleSheet.create({
   container: {

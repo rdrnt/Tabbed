@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
-import BookmarkAvatar from './BookmarkAvatar';
+// import BookmarkAvatar from './BookmarkAvatar';
 
 class BookmarkCell extends React.PureComponent {
   constructor(props) {
@@ -23,9 +23,12 @@ class BookmarkCell extends React.PureComponent {
         onLongPress={() => onPress(item, true)}
       >
         <View style={cellStyles.cell}>
-          <View style={cellStyles.image}>
-            <BookmarkAvatar title={item.title} />
-          </View>
+          <Image
+            source={{
+              uri: item.imageUrl,
+            }}
+            style={cellStyles.image}
+          />
           <View style={cellStyles.info}>
             <View style={{ flexDirection: 'row' }}>
               <Text style={cellStyles.title}>{item.title}</Text>
@@ -62,6 +65,7 @@ const cellStyles = StyleSheet.create({
     borderRadius: 25,
     alignSelf: 'center',
     marginRight: 5,
+    backgroundColor: '#F4F2F1',
   },
   isPrivate: {
     height: 10,

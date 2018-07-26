@@ -1,4 +1,5 @@
 import Realm from 'realm';
+import { bookmarkUtils } from '.';
 
 const BookmarkSchema = {
   name: 'Bookmark',
@@ -6,6 +7,7 @@ const BookmarkSchema = {
     title: 'string',
     url: 'string',
     isPrivate: { type: 'bool', default: false },
+    imageUrl: 'string',
     dateCreated: { type: 'date', default: new Date() },
   },
 };
@@ -40,11 +42,14 @@ const localStorage = {
   },
 
   addNewBookmark: bookmark => {
-    realm.write(() => {
-      realm.create('Bookmark', {
-        title: bookmark.title,
-        url: bookmark.url,
-        isPrivate: bookmark.isPrivate,
+    bookmarkUtils.getFavicon(bookmark.url, bookmarkIcon => {
+      realm.write(() => {
+        realm.create('Bookmark', {
+          title: bookmark.title,
+          url: bookmark.url,
+          imageUrl: bookmarkIcon,
+          isPrivate: bookmark.isPrivate,
+        });
       });
     });
   },
