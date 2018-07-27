@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
+import { Transition } from 'react-navigation-fluid-transitions';
 
 import { typography } from '../../styles';
 
@@ -24,7 +25,9 @@ const headerStyles = StyleSheet.create({
 const BookmarkViewerHeader = ({ item }) => (
   <View style={headerStyles.container}>
     <View style={headerStyles.info}>
-      <BookmarkAvatar title={item.title} size="75" />
+      <Transition shared="circle">
+        <BookmarkAvatar title={item.title} size="75" />
+      </Transition>
       <Text style={headerStyles.title}>{item.title}</Text>
     </View>
   </View>

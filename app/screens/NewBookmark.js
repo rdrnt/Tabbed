@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View } from 'react-native';
+
+import GradientContainer from '../components/GradientContainer';
 
 import NewBookmarkForm from '../components/Forms/NewBookmarkForm';
 
 import { bookmarkActions } from '../actions';
-
-import { globals } from '../helpers';
 
 class NewBookmark extends Component {
   constructor(props) {
@@ -49,20 +48,11 @@ class NewBookmark extends Component {
 
   render() {
     return (
-      <View style={styles.container}>
+      <GradientContainer>
         <NewBookmarkForm onSubmit={this.onSubmit} />
-      </View>
+      </GradientContainer>
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    width: '100%',
-    backgroundColor: globals.colors.lighterGrey,
-  },
-});
 
 export default connect()(NewBookmark);

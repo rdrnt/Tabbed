@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { StyleSheet } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Button } from 'react-native';
 
 import GradientContainer from '../components/GradientContainer';
 
@@ -43,6 +43,7 @@ class BookmarkViewer extends Component {
           <BookmarkViewerHeader item={item} />
           <BookmarkViewerList item={item} />
         </PrivateView>
+        <Button title="back" onPress={() => navigation.goBack()} />
       </GradientContainer>
     );
   }

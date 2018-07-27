@@ -7,6 +7,7 @@ import {
   TouchableHighlight,
 } from 'react-native';
 import PropTypes from 'prop-types';
+import { Transition } from 'react-navigation-fluid-transitions';
 
 import { colors } from '../../styles';
 
@@ -25,14 +26,16 @@ class BookmarkCell extends React.PureComponent {
         onLongPress={() => onPress(item, true)}
       >
         <View style={cellStyles.cell}>
-          <View style={cellStyles.imageBackground}>
-            <Image
-              source={{
-                uri: item.imageUrl,
-              }}
-              style={cellStyles.image}
-            />
-          </View>
+          <Transition shared="circle">
+            <View style={cellStyles.imageBackground}>
+              <Image
+                source={{
+                  uri: item.imageUrl,
+                }}
+                style={cellStyles.image}
+              />
+            </View>
+          </Transition>
           <View style={cellStyles.info}>
             <Text style={cellStyles.title}>{item.title}</Text>
             <Text

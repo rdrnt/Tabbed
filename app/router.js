@@ -3,9 +3,9 @@ import {
   createStackNavigator,
   createBottomTabNavigator,
 } from 'react-navigation';
-
 import { View } from 'react-native';
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { FluidNavigator } from 'react-navigation-fluid-transitions';
 
 import Bookmarks from './screens/Bookmarks';
 import BookmarkViewer from './screens/BookmarkViewer';

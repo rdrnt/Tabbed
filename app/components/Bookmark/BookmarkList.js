@@ -59,7 +59,7 @@ class BookmarkList extends Component {
 
   _renderComponentIfNoItems() {
     return (
-      <View style={sectionStyles.noItems}>
+      <View>
         <Text>No items available.</Text>
         <Text>Click here to add a new bookmark.</Text>
       </View>
@@ -78,7 +78,6 @@ class BookmarkList extends Component {
         renderItem={this.renderItem}
         renderSectionHeader={this._renderSectionHeader}
         ItemSeparatorComponent={this._renderitemSeparator}
-        ListEmptyComponent={this._renderComponentIfNoItems}
         sections={bookmarks}
         keyExtractor={(item, index) => item + index}
       />
