@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { StyleSheet, View } from 'react-native';
 
 import GradientContainer from '../components/GradientContainer';
 
@@ -11,15 +10,6 @@ import BookmarkList from '../components/Bookmark/BookmarkList';
 import { bookmarkActions } from '../actions';
 
 import { sorter, bookmarkUtils } from '../helpers';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    width: '100%',
-    height: '100%',
-    backgroundColor: '#FFFFFF',
-  },
-});
 
 // Home page AKA bookmark page
 class Bookmarks extends Component {

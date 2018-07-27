@@ -19,6 +19,7 @@ const GradientContainer = ({ children }) => (
     colors={['#7889FF', '#D3E7FD']}
     style={containerStyles.container}
   >
+    {/* We have to do getHeaderInset for the transulect Navigation bar */}
     <ScrollView style={{ flex: 1 }} {...getHeaderInset()}>
       {children}
     </ScrollView>
