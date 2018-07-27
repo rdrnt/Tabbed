@@ -8,6 +8,8 @@ import {
 } from 'react-native';
 import PropTypes from 'prop-types';
 
+import { colors } from '../../styles';
+
 // import BookmarkAvatar from './BookmarkAvatar';
 
 class BookmarkCell extends React.PureComponent {
@@ -23,18 +25,23 @@ class BookmarkCell extends React.PureComponent {
         onLongPress={() => onPress(item, true)}
       >
         <View style={cellStyles.cell}>
-          <Image
-            source={{
-              uri: item.imageUrl,
-            }}
-            style={cellStyles.image}
-          />
+          <View style={cellStyles.imageBackground}>
+            <Image
+              source={{
+                uri: item.imageUrl,
+              }}
+              style={cellStyles.image}
+            />
+          </View>
           <View style={cellStyles.info}>
-            <View style={{ flexDirection: 'row' }}>
-              <Text style={cellStyles.title}>{item.title}</Text>
-              {item.isPrivate && <Image style={cellStyles.isPrivate} />}
-            </View>
-            <Text>{item.url}</Text>
+            <Text style={cellStyles.title}>{item.title}</Text>
+            <Text
+              style={cellStyles.subtitle}
+              ellipsizeMode="tail"
+              numberOfLines={1}
+            >
+              {item.url}
+            </Text>
           </View>
         </View>
       </TouchableHighlight>
@@ -55,26 +62,35 @@ const cellStyles = StyleSheet.create({
   },
   info: {
     flex: 1,
-    padding: 5,
     alignSelf: 'center',
+    paddingLeft: 10,
+    height: 50,
   },
   title: {
-    fontWeight: 'bold',
+    fontWeight: '600',
+    fontSize: 17,
+    color: 'black',
+    lineHeight: 22,
+    paddingTop: 3,
   },
-
+  subtitle: {
+    color: colors.flatDarkGrey,
+    fontSize: 13,
+    lineHeight: 20,
+  },
   image: {
+    height: 25,
+    width: 25,
+    borderRadius: 12.5,
+    alignSelf: 'center',
+  },
+  imageBackground: {
+    backgroundColor: colors.flatLightGrey,
     height: 50,
     width: 50,
     borderRadius: 25,
     alignSelf: 'center',
-    marginRight: 5,
-    backgroundColor: '#F4F2F1',
-  },
-  isPrivate: {
-    height: 10,
-    width: 15,
-    marginLeft: 5,
-    alignSelf: 'center',
+    justifyContent: 'center',
   },
 });
 

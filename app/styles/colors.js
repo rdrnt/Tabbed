@@ -6,6 +6,10 @@ const colors = {
   lightGrey: iOSColors.lightGray,
   grey: iOSColors.gray,
   blueTint: '#007AFF',
+
+  // new styles
+  flatLightGrey: '#ECECEC',
+  flatDarkGrey: '#CECECE',
 };
 
 export default colors;
