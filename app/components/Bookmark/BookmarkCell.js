@@ -47,8 +47,11 @@ const cellStyles = StyleSheet.create({
     flex: 1,
     flexDirection: 'row',
     alignItems: 'flex-start',
-    height: 75,
+    height: 60,
     paddingHorizontal: 16,
+    backgroundColor: 'white',
+    marginHorizontal: 16,
+    borderRadius: 8,
   },
   info: {
     flex: 1,

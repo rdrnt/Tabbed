@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ScrollView } from 'react-native';
+import { StyleSheet, ScrollView, StatusBar } from 'react-native';
 import PropTypes from 'prop-types';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -19,6 +19,8 @@ const GradientContainer = ({ children }) => (
     colors={['#7889FF', '#D3E7FD']}
     style={containerStyles.container}
   >
+    {/* Light status bar */}
+    <StatusBar barStyle="light-content" />
     {/* We have to do getHeaderInset for the transulect Navigation bar */}
     <ScrollView style={{ flex: 1 }} {...getHeaderInset()}>
       {children}

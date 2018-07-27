@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Platform, StyleSheet, Text, View, SectionList } from 'react-native';
+import { StyleSheet, Text, View, SectionList } from 'react-native';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
@@ -7,16 +7,18 @@ import { globals } from '../../helpers';
 
 import BookmarkCell from './BookmarkCell';
 
-const sectionStyles = {
+const sectionStyles = StyleSheet.create({
   title: {
     fontWeight: 'bold',
+    color: 'white',
   },
   view: {
-    backgroundColor: globals.colors.lightGrey,
+    backgroundColor: 'rgba(255, 255, 255, 0.0)',
     paddingHorizontal: 16,
+    paddingVertical: 5,
   },
   seperator: {
-    backgroundColor: globals.colors.lightGrey,
+    backgroundColor: 'rgba(255, 255, 255, 0.0)',
     height: 1,
     marginLeft: 16,
   },
@@ -25,7 +27,7 @@ const sectionStyles = {
     backgroundColor: globals.colors.lighterGrey,
     flex: 1,
   },
-};
+});
 
 class BookmarkList extends Component {
   constructor(props) {
