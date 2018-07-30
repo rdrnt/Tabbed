@@ -31,6 +31,10 @@ const bookmarkUtils = {
         }
       });
   },
+  isImageSvg: bookmarkImageUrl =>
+    bookmarkImageUrl.slice(
+      (Math.max(0, bookmarkImageUrl.lastIndexOf('.')) || Infinity) + 1
+    ) === 'svg',
 };
 
 export default bookmarkUtils;

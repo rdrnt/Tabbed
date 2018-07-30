@@ -1,14 +1,19 @@
 import React from 'react';
+import { Image } from 'react-native';
 import PropTypes from 'prop-types';
+import SvgUri from 'react-native-svg-uri';
 
-import UserAvatar from 'react-native-user-avatar';
+import { bookmarkUtils } from '../../helpers';
 
-const BookmarkAvatar = ({ title, size }) => (
-  <UserAvatar name={title} size={size} color="#8b909b" />
-);
+const BookmarkAvatar = ({ url, size }) =>
+  bookmarkUtils.isImageSvg(url) ? (
+    <SvgUri width="50" height="50" source={{ uri: url }} />
+  ) : (
+    <Image source={{ uri: url }} style={{ width: 50, height: 50 }} />
+  );
 
 BookmarkAvatar.propTypes = {
-  title: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
   size: PropTypes.string,
 };
 

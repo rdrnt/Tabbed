@@ -26,7 +26,7 @@ const BookmarkViewerHeader = ({ item }) => (
   <View style={headerStyles.container}>
     <View style={headerStyles.info}>
       <Transition shared="circle">
-        <BookmarkAvatar title={item.title} size="75" />
+        <BookmarkAvatar url={item.imageUrl} size="75" />
       </Transition>
       <Text style={headerStyles.title}>{item.title}</Text>
     </View>
