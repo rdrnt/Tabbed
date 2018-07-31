@@ -24,6 +24,7 @@ class BookmarkCell extends React.PureComponent {
       <TouchableHighlight
         onPress={() => onPress(item, false)}
         onLongPress={() => onPress(item, true)}
+        style={{ paddingBottom: 15 }}
       >
         <View style={cellStyles.cell}>
           <Transition shared="circle">

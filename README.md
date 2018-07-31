@@ -33,6 +33,9 @@ I would love contributions! Right now I'm mainly looking for help with stuff in 
 - Settings
 - Onboarding
 
+### Project
+- Upgrade to Typescript?
+
 ## Libraries
 
 - Using [Realm](https://realm.io/docs/javascript/latest/) for strorage
