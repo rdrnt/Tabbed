@@ -12,6 +12,8 @@ import BookmarkViewer from './screens/BookmarkViewer';
 import Settings from './screens/Settings';
 import NewBookmark from './screens/NewBookmark';
 
+import { getHeaderInset } from './helpers';
+
 const BookmarkStack = createStackNavigator(
   {
     Bookmark: {

@@ -35,7 +35,7 @@ class NewBookmark extends Component {
   ) {
     console.log('addBookmark onSubmit', isValid, values);
 
-    const { dispatch } = this.props;
+    const { dispatch, navigation } = this.props;
 
     if (isValid === true) {
       console.log('Adding new form with values', values);
@@ -43,6 +43,7 @@ class NewBookmark extends Component {
       dispatch(bookmarkActions.addBookmark(values));
 
       // go back to main screen
+      navigation.goBack();
     }
   }
 

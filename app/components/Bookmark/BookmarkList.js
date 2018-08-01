@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { StyleSheet, Text, View, SectionList } from 'react-native';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
 
 import { globals } from '../../helpers';
 
@@ -87,6 +86,7 @@ class BookmarkList extends Component {
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,
+  navigation: PropTypes.objectOf(PropTypes.shape).isRequired,
 };
 
-export default connect()(BookmarkList);
+export default BookmarkList;

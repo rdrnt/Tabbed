@@ -13,8 +13,9 @@ const BOOKMARK_FORM_NAME = 'newBookmarkForm';
 const NewBookmarkForm = ({ onSubmit }) => (
   <GiftedForm
     formName={BOOKMARK_FORM_NAME} // GiftedForm instances that use the same name will also share the same states
-    clearOnClose={false} // delete the values of the form when unmounted
+    clearOnClose // delete the values of the form when unmounted
     onValueChange={this.handleFormValueChange}
+    style={{ height: '100%' }}
     defaults={{
       /*
           username: 'Farid',
