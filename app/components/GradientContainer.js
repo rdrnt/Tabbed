@@ -22,14 +22,16 @@ const GradientContainer = ({ children }) => (
     {/* Light status bar */}
     <StatusBar barStyle="light-content" />
     {/* We have to do getHeaderInset for the transulect Navigation bar */}
-    <ScrollView style={{ flex: 1 }} {...getHeaderInset()}>
-      {children}
-    </ScrollView>
+    <ScrollView {...getHeaderInset()}>{children}</ScrollView>
   </LinearGradient>
 );
 
 GradientContainer.propTypes = {
-  children: PropTypes.element.isRequired,
+  children: PropTypes.oneOf(PropTypes.element),
+};
+
+GradientContainer.defaultProps = {
+  children: null,
 };
 
 export default GradientContainer;
