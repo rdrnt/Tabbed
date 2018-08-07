@@ -19,6 +19,7 @@ const headerStyles = StyleSheet.create({
   },
   title: {
     ...StyleSheet.flatten(typography.title1),
+    color: 'white',
   },
 });
 
@@ -26,7 +27,7 @@ const BookmarkViewerHeader = ({ item }) => (
   <View style={headerStyles.container}>
     <View style={headerStyles.info}>
       <Transition shared="circle">
-        <BookmarkAvatar url={item.imageUrl} size="75" />
+        <BookmarkAvatar url={item.imageUrl} size="50" />
       </Transition>
       <Text style={headerStyles.title}>{item.title}</Text>
     </View>
