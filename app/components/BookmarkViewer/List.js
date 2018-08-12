@@ -3,7 +3,6 @@ import { View, Text } from 'react-native';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 
-import { colors } from '../../styles';
 import { dateUtils } from '../../helpers';
 
 const Cell = styled.View`

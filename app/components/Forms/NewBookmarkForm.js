@@ -1,122 +1,40 @@
 import React from 'react';
+import { View, TextInput, Button } from 'react-native';
 import PropTypes from 'prop-types';
-import { GiftedForm } from 'react-native-gifted-form';
+import { Formik } from 'formik';
+
+import styled from 'styled-components';
+
+import Input from './AddBookmarkForm/Input';
 
 // The fields are
 // Title
 // URL
 // isPrivate
 
-// We use this to identify the form in GiftedFormManager
-const BOOKMARK_FORM_NAME = 'newBookmarkForm';
+const FormContainer = styled.View`
+  padding: 10px;
+`;
 
-const NewBookmarkForm = ({ onSubmit }) => (
-  <GiftedForm
-    formName={BOOKMARK_FORM_NAME} // GiftedForm instances that use the same name will also share the same states
-    clearOnClose // delete the values of the form when unmounted
-    onValueChange={this.handleFormValueChange}
-    defaults={{
-      /*
-          username: 'Farid',
-          'gender{M}': true,
-          password: 'abcdefg',
-          country: 'FR',
-          birthday: new Date(((new Date()).getFullYear() - 18)+''),
-          */
-      isPrivate: false,
+const NewBookmarkForm = props => (
+  <Formik
+    onSubmit={(values, actions) => {
+      setTimeout(() => {
+        console.log(JSON.stringify(values, null, 2));
+        actions.setSubmitting(false);
+      }, 1000);
     }}
-    validators={{
-      title: {
-        title: 'Title',
-        validate: [
-          {
-            validator: 'isLength',
-            arguments: [1, 500],
-            message:
-              '{TITLE} must be between {ARGS[0]} and {ARGS[1]} characters',
-          },
-        ],
-      },
-      url: {
-        title: 'URL',
-        validate: [
-          {
-            validator: 'isLength',
-            arguments: [3, 500],
-            message: '{URL} must be between {ARGS[0]} and {ARGS[1]} characters',
-          },
-          {
-            validator: (...args) => {
-              // args [0] = the url
-              const pattern = new RegExp(
-                '^(https?:\\/\\/)?' +
-                  '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.?)+[a-z]{2,}|' +
-                  '((\\d{1,3}\\.){3}\\d{1,3}))' +
-                  '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*' +
-                  '(\\?[;&a-z\\d%_.~+=-]*)?' +
-                  '(\\#[-a-z\\d_]*)?$',
-                'i'
-              );
-              return pattern.test(args[0]);
-            },
-            message: '{TITLE} is not valid',
-          },
-        ],
-      },
-    }}
-  >
-    <GiftedForm.SeparatorWidget />
-
-    {/* Title */}
-    <GiftedForm.TextInputWidget
-      name="title"
-      title="Title"
-      placeholder="Pinterest Recipe For Cake"
-      clearButtonMode="while-editing"
-      autoCapitalize="words"
-    />
-    <GiftedForm.SeparatorWidget />
-    {/* URL */}
-    <GiftedForm.TextInputWidget
-      name="url"
-      title="URL"
-      placeholder="https://google.ca"
-      value="https://"
-      clearButtonMode="while-editing"
-    />
-    <GiftedForm.SeparatorWidget />
-
-    {/* isPrivate switch */}
-    <GiftedForm.SwitchWidget name="isPrivate" title="Private" />
-
-    <GiftedForm.SeparatorWidget />
-
-    {/* Categories */}
-    {/*
-    <GiftedForm.GroupWidget title="Categories">
-      <GiftedForm.SelectWidget
-        name="categories"
-        title="Categories"
-        multiple={true}
-      >
-        {categories.map((category, index) => {
-          console.log(category.toString(), index);
-          return (
-            <GiftedForm.OptionWidget
-              title={category.toString()}
-              value={category.toString()}
-              key={index}
-            />
-          );
-        })}
-      </GiftedForm.SelectWidget>
-    </GiftedForm.GroupWidget>
-    */}
-
-    <GiftedForm.ErrorsWidget />
-
-    <GiftedForm.SubmitWidget title="Save" onSubmit={onSubmit} />
-  </GiftedForm>
+    render={props => (
+      <FormContainer>
+        <Input
+          name="name"
+          onChangeText={props.handleChange('name')}
+          value={props.values.name}
+        />
+        <Button title="submit" onPress={props.submitForm} />
+      </FormContainer>
+    )}
+  />
 );
 
 NewBookmarkForm.propTypes = {
