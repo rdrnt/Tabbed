@@ -6,6 +6,7 @@ import { Formik } from 'formik';
 import styled from 'styled-components';
 
 import Input from './AddBookmarkForm/Input';
+import SwitchInput from './AddBookmarkForm/Switch';
 
 // The fields are
 // Title
@@ -24,14 +25,23 @@ const NewBookmarkForm = props => (
         actions.setSubmitting(false);
       }, 1000);
     }}
-    render={props => (
+    render={formikProps => (
       <FormContainer>
         <Input
           name="name"
-          onChangeText={props.handleChange('name')}
-          value={props.values.name}
+          onChangeText={formikProps.handleChange('name')}
+          value={formikProps.values.name}
         />
-        <Button title="submit" onPress={props.submitForm} />
+        <Input
+          name="url"
+          onChangeText={formikProps.handleChange('url')}
+          value={formikProps.values.url}
+        />
+        <SwitchInput
+          name="private"
+          onValueChange={formikProps.handleChange('private')}
+        />
+        <Button title="submit" onPress={formikProps.submitForm} />
       </FormContainer>
     )}
   />
