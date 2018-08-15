@@ -13,7 +13,11 @@ const Title = styled.Text`
   color: white;
 `;
 
-const SwitchInput = ({ disabled, onValueChange, value, name }) => <Switch />;
+const SwitchInput = ({ disabled, onValueChange, value, name }) => (
+  <Container>
+    <Switch thumbTintColor="#FFFFFF" />
+  </Container>
+);
 
 Switch.propTypes = {
   name: PropTypes.string.isRequired,
