@@ -22,13 +22,12 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
   - ~~Create form layout~~
   - OnSubmit validation
   - categories have better implementation
-- Fix GiftedForm not working fully correctly
 - URL's have the following properties
   - Title
   - URL
   - Date created
   - ~~Categories~~
-  - ~~Image (AKA Favicon)~~
+  - Image (AKA Favicon)
   - isPrivate
 
 ### Pages
@@ -37,12 +36,11 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
 
 ### Project
 - Upgrade to Typescript?
+- 100% styled components
 
 ## Libraries
 
 - Using [Realm](https://realm.io/docs/javascript/latest/) for strorage
-- [react-native-user-avatar](https://github.com/avishayil/react-native-user-avatar) for avatars
-- [react-native-typography](https://github.com/hectahertz/react-native-typography) for typography/UI
 - [react-native-touch-id](https://github.com/naoufal/react-native-touch-id) for biometrics (unlocking via FaceID/TouchID)
 
 ## Screenshots
