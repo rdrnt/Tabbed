@@ -7,3 +7,4 @@ export { default as isValidUrl } from './isValidUrl';
 export { default as dateUtils } from './dateUtils';
 export { default as getHostName } from './getHostName';
 export { default as getHeaderInset } from './getHeaderInset';
+export { default as stringUtils } from './stringUtils';

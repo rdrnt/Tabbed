@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import LinearGradient from 'react-native-linear-gradient';
 
+import { colors } from '../styles';
 import { getHeaderInset } from '../helpers';
 
 const containerStyles = StyleSheet.create({
@@ -16,7 +17,7 @@ const containerStyles = StyleSheet.create({
 
 const GradientContainer = ({ children }) => (
   <LinearGradient
-    colors={['#7889FF', '#D3E7FD']}
+    colors={colors.gradients.background}
     style={containerStyles.container}
   >
     {/* Light status bar */}

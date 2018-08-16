@@ -4,9 +4,10 @@ import { Switch } from 'react-native';
 
 import styled from 'styled-components';
 
+import { stringUtils } from '../../../helpers';
+
 const Container = styled.View`
   padding: 5px;
-  background-color: green;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -17,23 +18,21 @@ const Title = styled.Text`
   color: white;
 `;
 
-const SwitchInput = ({ disabled, onValueChange, value, name }) => (
+const SwitchInput = ({ onValueChange, value, name }) => (
   <Container>
-    <Title>{name}</Title>
+    <Title>{stringUtils.capitalizeFirstLetter(name)}</Title>
     <Switch name={name} onValueChange={onValueChange} value={value} />
   </Container>
 );
 
 SwitchInput.propTypes = {
   name: PropTypes.string.isRequired,
-  disabled: PropTypes.bool,
   onValueChange: PropTypes.func.isRequired,
   value: PropTypes.bool,
 };
 
 SwitchInput.defaultProps = {
-  disabled: false,
-  value: true,
+  value: false,
 };
 
 export default SwitchInput;

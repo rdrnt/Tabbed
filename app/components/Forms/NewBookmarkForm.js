@@ -1,12 +1,13 @@
 import React from 'react';
-import { View, TextInput, Button } from 'react-native';
+import { Button } from 'react-native';
 import PropTypes from 'prop-types';
 import { Formik } from 'formik';
 
 import styled from 'styled-components';
 
-import Input from './AddBookmarkForm/Input';
+import TextInput from './AddBookmarkForm/Input';
 import SwitchInput from './AddBookmarkForm/Switch';
+import SubmitButton from './AddBookmarkForm/Submit';
 
 // The fields are
 // Title
@@ -25,26 +26,24 @@ const NewBookmarkForm = props => (
         actions.setSubmitting(false);
       }, 1000);
     }}
-    render={formikProps => (
+    render={({ handleChange, values, errors, submitForm, setFieldValue }) => (
       <FormContainer>
-        <Input
+        <TextInput
           name="name"
-          onChangeText={formikProps.handleChange('name')}
-          value={formikProps.values.name}
+          onChangeText={handleChange('name')}
+          value={values.name}
         />
-        <Input
+        <TextInput
           name="url"
-          onChangeText={formikProps.handleChange('url')}
-          value={formikProps.values.url}
+          onChangeText={handleChange('url')}
+          value={values.url}
         />
         <SwitchInput
           name="private"
-          onValueChange={value => {
-            formikProps.setFieldValue('private', value);
-          }}
-          value={formikProps.values.private}
+          onValueChange={value => setFieldValue('private', value)}
+          value={values.private}
         />
-        <Button title="submit" onPress={formikProps.submitForm} />
+        <SubmitButton title="submit" onPress={submitForm} />
       </FormContainer>
     )}
   />

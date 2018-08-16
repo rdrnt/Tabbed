@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { View } from 'react-native';
 
 import styled from 'styled-components';
+
+import { stringUtils } from '../../../helpers';
 
 const Container = styled.View`
   padding: 5px;
@@ -12,27 +13,28 @@ const Title = styled.Text`
   color: white;
 `;
 
-const TextInput = styled.TextInput`
+const Input = styled.TextInput`
   height: 25px;
   color: white;
   border-bottom-color: white;
   border-bottom-width: 1px;
 `;
 
-const Input = props => (
+const TextInput = ({ name, onChangeText, value }) => (
   <Container>
-    <Title>{props.name.toUpperCase()}</Title>
-    <TextInput
-      onChangeText={props.onChangeText}
-      name={props.name}
-      value={props.value}
-    />
+    <Title>{stringUtils.capitalizeFirstLetter(name)}</Title>
+    <Input onChangeText={onChangeText} name={name} value={value} />
   </Container>
 );
 
-Input.propTypes = {
+TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string,
 };
 
-export default Input;
+TextInput.defaultProps = {
+  value: '',
+};
+
+export default TextInput;
