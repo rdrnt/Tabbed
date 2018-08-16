@@ -6,6 +6,8 @@ Tabbed is a React Native powered app meant for storing and syncing your bookmark
 
 I would love contributions! Right now I'm mainly looking for help with stuff in the *TODO* list below. Mainly the *UI* stuff.
 
+When commiting, please try your best to use [this](http://karma-runner.github.io/2.0/dev/git-commit-msg.html) format for your commit messages.
+
 
 ## TODO
 ### UI
