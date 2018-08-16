@@ -39,7 +39,10 @@ const NewBookmarkForm = props => (
         />
         <SwitchInput
           name="private"
-          onValueChange={formikProps.handleChange('private')}
+          onValueChange={value => {
+            formikProps.setFieldValue('private', value);
+          }}
+          value={formikProps.values.private}
         />
         <Button title="submit" onPress={formikProps.submitForm} />
       </FormContainer>

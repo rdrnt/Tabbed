@@ -7,6 +7,9 @@ import styled from 'styled-components';
 const Container = styled.View`
   padding: 5px;
   background-color: green;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Title = styled.Text`
@@ -15,18 +18,19 @@ const Title = styled.Text`
 
 const SwitchInput = ({ disabled, onValueChange, value, name }) => (
   <Container>
-    <Switch thumbTintColor="#FFFFFF" />
+    <Title>{name}</Title>
+    <Switch name={name} onValueChange={onValueChange} value={value} />
   </Container>
 );
 
-Switch.propTypes = {
+SwitchInput.propTypes = {
   name: PropTypes.string.isRequired,
   disabled: PropTypes.bool,
   onValueChange: PropTypes.func.isRequired,
   value: PropTypes.bool,
 };
 
-Switch.defaultProps = {
+SwitchInput.defaultProps = {
   disabled: false,
   value: true,
 };
