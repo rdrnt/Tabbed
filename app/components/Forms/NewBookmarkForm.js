@@ -26,6 +26,11 @@ const NewBookmarkForm = props => (
         actions.setSubmitting(false);
       }, 1000);
     }}
+    initialValues={{
+      name: '',
+      url: '',
+      private: false,
+    }}
     render={({ handleChange, values, errors, submitForm, setFieldValue }) => (
       <FormContainer>
         <TextInput

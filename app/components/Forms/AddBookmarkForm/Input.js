@@ -6,7 +6,7 @@ import styled from 'styled-components';
 import { stringUtils } from '../../../helpers';
 
 const Container = styled.View`
-  padding: 5px;
+  padding: 10px;
 `;
 
 const Title = styled.Text`
