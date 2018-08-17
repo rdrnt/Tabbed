@@ -26,25 +26,16 @@ class NewBookmark extends Component {
     */
   }
 
-  onSubmit(
-    isValid,
-    values,
-    validationResults,
-    postSubmit = null,
-    modalNavigator = null
-  ) {
-    console.log('addBookmark onSubmit', isValid, values);
+  onSubmit(values, actions) {
+    console.log('addBookmark onSubmit', values);
 
     const { dispatch, navigation } = this.props;
+    actions.setSubmitting(false);
+    // Adding the bookmark
+    // dispatch(bookmarkActions.addBookmark(values));
 
-    if (isValid === true) {
-      console.log('Adding new form with values', values);
-      // Adding the bookmark
-      dispatch(bookmarkActions.addBookmark(values));
-
-      // go back to main screen
-      navigation.goBack();
-    }
+    // go back to main screen
+    navigation.goBack();
   }
 
   render() {

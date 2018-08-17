@@ -18,20 +18,22 @@ const FormContainer = styled.View`
   padding: 10px;
 `;
 
-const NewBookmarkForm = props => (
+const NewBookmarkForm = ({ onSubmit }) => (
   <Formik
-    onSubmit={(values, actions) => {
-      setTimeout(() => {
-        console.log(JSON.stringify(values, null, 2));
-        actions.setSubmitting(false);
-      }, 1000);
-    }}
+    onSubmit={onSubmit}
     initialValues={{
       name: '',
       url: '',
       private: false,
     }}
-    render={({ handleChange, values, errors, submitForm, setFieldValue }) => (
+    render={({
+      handleChange,
+      values,
+      errors,
+      submitForm,
+      setFieldValue,
+      isSubmitting,
+    }) => (
       <FormContainer>
         <TextInput
           name="name"
@@ -50,7 +52,11 @@ const NewBookmarkForm = props => (
           onValueChange={value => setFieldValue('private', value)}
           value={values.private}
         />
-        <SubmitButton title="submit" onPress={submitForm} />
+        <SubmitButton
+          title="submit"
+          onPress={submitForm}
+          disabled={isSubmitting}
+        />
       </FormContainer>
     )}
   />

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Ionicons from 'react-native-vector-icons/Ionicons';
+
+// import { Item, DefaultHeaderButtons } from '../components/HeaderButtons';
 
 import GradientContainer from '../components/GradientContainer';
-
-import { Item, DefaultHeaderButtons } from '../components/HeaderButtons';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
 
@@ -20,12 +21,13 @@ class Bookmarks extends Component {
     return {
       title: 'Bookmarks',
       headerRight: (
-        <DefaultHeaderButtons>
-          <Item
-            iconName="ios-add"
-            onPress={() => navigation.navigate('NewBookmark')}
-          />
-        </DefaultHeaderButtons>
+        <Ionicons.Button
+          backgroundColor="transparent"
+          name="ios-add"
+          size={23}
+          color="white"
+          onPress={() => navigation.navigate('NewBookmark')}
+        />
       ),
     };
   };
