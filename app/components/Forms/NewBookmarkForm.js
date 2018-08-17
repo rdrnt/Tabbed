@@ -42,6 +42,8 @@ const NewBookmarkForm = props => (
           name="url"
           onChangeText={handleChange('url')}
           value={values.url}
+          autoCapitalize="none"
+          autoCorrect={false}
         />
         <SwitchInput
           name="private"

@@ -20,10 +20,22 @@ const Input = styled.TextInput`
   border-bottom-width: 1px;
 `;
 
-const TextInput = ({ name, onChangeText, value }) => (
+const TextInput = ({
+  name,
+  onChangeText,
+  value,
+  autoCapitalize,
+  autoCorrect,
+}) => (
   <Container>
     <Title>{stringUtils.capitalizeFirstLetter(name)}</Title>
-    <Input onChangeText={onChangeText} name={name} value={value} />
+    <Input
+      onChangeText={onChangeText}
+      name={name}
+      value={value}
+      autoCapitalize={autoCapitalize}
+      autoCorrect={autoCorrect}
+    />
   </Container>
 );
 
@@ -31,10 +43,14 @@ TextInput.propTypes = {
   name: PropTypes.string.isRequired,
   onChangeText: PropTypes.func.isRequired,
   value: PropTypes.string,
+  autoCapitalize: PropTypes.string,
+  autoCorrect: PropTypes.bool,
 };
 
 TextInput.defaultProps = {
   value: '',
+  autoCapitalize: 'sentences',
+  autoCorrect: true,
 };
 
 export default TextInput;
