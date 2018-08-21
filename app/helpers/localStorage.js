@@ -21,7 +21,6 @@ const realm = new Realm({
 console.log(realm.path);
 
 realm.objects('Bookmark').addListener((bookmarks, changes) => {
-  console.log('changes', changes);
   const { deletions, insertions, modifications } = changes;
 
   changes.insertions.forEach(index => {
@@ -30,9 +29,19 @@ realm.objects('Bookmark').addListener((bookmarks, changes) => {
     console.log(modifiedMarks.title);
   });
 
+  changes.deletions.forEach(index => {
+    console.log('deletion', index);
+  });
+
+  changes.modifications.forEach(index => {
+    console.log('modification', index);
+  });
+
+  /*
   console.log('localStorage Realm: deletion', deletions);
   console.log('localStorage Realm: insertions', insertions);
   console.log('localStorage Realm: modifications', modifications);
+  */
 });
 
 const localStorage = {

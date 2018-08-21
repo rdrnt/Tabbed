@@ -22,7 +22,7 @@ const NewBookmarkForm = ({ onSubmit }) => (
   <Formik
     onSubmit={onSubmit}
     initialValues={{
-      name: '',
+      title: '',
       url: '',
       private: false,
     }}
@@ -36,9 +36,9 @@ const NewBookmarkForm = ({ onSubmit }) => (
     }) => (
       <FormContainer>
         <TextInput
-          name="name"
-          onChangeText={handleChange('name')}
-          value={values.name}
+          name="title"
+          onChangeText={handleChange('title')}
+          value={values.title}
         />
         <TextInput
           name="url"

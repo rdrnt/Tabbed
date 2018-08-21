@@ -32,7 +32,7 @@ class NewBookmark extends Component {
     const { dispatch, navigation } = this.props;
     actions.setSubmitting(false);
     // Adding the bookmark
-    // dispatch(bookmarkActions.addBookmark(values));
+    dispatch(bookmarkActions.addBookmark(values));
 
     // go back to main screen
     navigation.goBack();
