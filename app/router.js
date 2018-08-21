@@ -46,11 +46,33 @@ const BookmarkStack = createStackNavigator(
   }
 );
 
-const SettingsStack = createStackNavigator({
-  Settings: {
-    screen: Settings,
+const SettingsStack = createStackNavigator(
+  {
+    Settings: {
+      screen: Settings,
+    },
   },
-});
+  {
+    navigationOptions: {
+      // So the header is see through
+      headerTransparent: true,
+      // View that has no background alpha
+      headerBackground: (
+        <View
+          style={{
+            flex: 1,
+            backgroundColor: 'rgba(255,255,255,0.0)',
+          }}
+        />
+      ),
+      headerTintColor: '#FFF',
+      // Removes line under nav bar
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
+    },
+  }
+);
 
 const RootStack = createBottomTabNavigator(
   {

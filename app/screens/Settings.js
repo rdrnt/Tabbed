@@ -1,25 +1,24 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { Text } from 'react-native';
 
-export default class Settings extends Component {
+import GradientContainer from '../components/GradientContainer';
+
+class Settings extends Component {
+  static navigationOptions = {
+    title: 'Settings',
+  };
+
   constructor(props) {
     super(props);
   }
 
   render() {
     return (
-      <View>
+      <GradientContainer>
         <Text>Settings panel</Text>
-      </View>
+      </GradientContainer>
     );
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    width: '100%',
-  },
-});
+export default Settings;

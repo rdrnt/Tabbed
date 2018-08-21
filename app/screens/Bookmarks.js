@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
 // import { Item, DefaultHeaderButtons } from '../components/HeaderButtons';
@@ -24,7 +25,6 @@ class Bookmarks extends Component {
         <Ionicons.Button
           backgroundColor="transparent"
           name="ios-add"
-          size={23}
           color="white"
           onPress={() => navigation.navigate('NewBookmark')}
         />
@@ -68,6 +68,10 @@ class Bookmarks extends Component {
     );
   }
 }
+
+Bookmarks.propTypes = {
+  dispatch: PropTypes.func.isRequired,
+};
 
 function mapStateToProps(state) {
   return {
