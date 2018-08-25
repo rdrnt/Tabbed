@@ -8,7 +8,9 @@ const bookmarkActions = {
   }),
 
   addBookmark: bookmark => dispatch => {
+    // Add the bookmark
     localStorage.addNewBookmark(bookmark);
+    // update the bookmarks in the store
     dispatch(bookmarkActions.fetchBookmarks());
   },
 
