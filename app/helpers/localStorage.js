@@ -23,17 +23,17 @@ console.log(realm.path);
 realm.objects('Bookmark').addListener((bookmarks, changes) => {
   const { deletions, insertions, modifications } = changes;
 
-  changes.insertions.forEach(index => {
-    let modifiedMarks = bookmarks[index];
+  insertions.forEach(index => {
+    const modifiedMarks = bookmarks[index];
     console.log('modifiedMarks', modifiedMarks);
     console.log(modifiedMarks.title);
   });
 
-  changes.deletions.forEach(index => {
+  deletions.forEach(index => {
     console.log('deletion', index);
   });
 
-  changes.modifications.forEach(index => {
+  modifications.forEach(index => {
     console.log('modification', index);
   });
 

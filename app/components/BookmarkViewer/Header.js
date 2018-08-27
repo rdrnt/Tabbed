@@ -1,37 +1,39 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
 import PropTypes from 'prop-types';
-import { Transition } from 'react-navigation-fluid-transitions';
+import styled from 'styled-components';
 
 import { typography } from '../../styles';
 
-import BookmarkAvatar from '../Bookmark/BookmarkAvatar';
+import BookmarkImage from '../Bookmark/BookmarkImage';
 
-const headerStyles = StyleSheet.create({
-  container: {
-    width: '100%',
-  },
-  info: {
-    marginBottom: 20,
-    alignSelf: 'center',
-    flexDirection: 'column',
-    alignItems: 'center',
-  },
-  title: {
-    ...StyleSheet.flatten(typography.title1),
-    color: 'white',
-  },
-});
+const Container = styled.View`
+  width: 100%;
+`;
+
+const Info = styled.View`
+  margin-bottom: 20px;
+  align-self: center;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const Title = styled.Text`
+  ${typography.title1};
+  color: white;
+`;
 
 const BookmarkViewerHeader = ({ item }) => (
-  <View style={headerStyles.container}>
-    <View style={headerStyles.info}>
-      <Transition shared="circle">
-        <BookmarkAvatar url={item.imageUrl} size="50" />
-      </Transition>
-      <Text style={headerStyles.title}>{item.title}</Text>
-    </View>
-  </View>
+  <Container>
+    <Info>
+      <BookmarkImage
+        url={item.imageUrl}
+        height={40}
+        width={40}
+        drawBackground
+      />
+      <Title>{item.title}</Title>
+    </Info>
+  </Container>
 );
 
 BookmarkViewerHeader.propTypes = {
