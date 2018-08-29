@@ -6,15 +6,17 @@ import { typography } from '../../styles';
 
 import BookmarkImage from '../Bookmark/BookmarkImage';
 
+import HeaderButton from './Button';
+
 const Container = styled.View`
   width: 100%;
 `;
 
 const Info = styled.View`
-  margin-bottom: 20px;
   align-self: center;
   flex-direction: column;
   align-items: center;
+  padding: 0px 10px;
 `;
 
 const Title = styled.Text`
@@ -32,6 +34,7 @@ const BookmarkViewerHeader = ({ item }) => (
         drawBackground
       />
       <Title>{item.title}</Title>
+      <HeaderButton />
     </Info>
   </Container>
 );

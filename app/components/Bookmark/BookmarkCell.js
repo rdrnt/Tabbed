@@ -64,4 +64,13 @@ const BookmarkCell = ({ item, onPress }) => (
   </TouchContainer>
 );
 
+BookmarkCell.propTypes = {
+  item: PropTypes.objectOf(PropTypes.shape).isRequired,
+  onPress: PropTypes.func,
+};
+
+BookmarkCell.defaultProps = {
+  onPress: () => {},
+};
+
 export default BookmarkCell;

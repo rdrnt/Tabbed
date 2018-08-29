@@ -43,7 +43,6 @@ class BookmarkViewer extends Component {
           <BookmarkViewerHeader item={item} />
           <BookmarkViewerList item={item} />
         </PrivateView>
-        <Button title="back" onPress={() => navigation.goBack()} />
       </GradientContainer>
     );
   }

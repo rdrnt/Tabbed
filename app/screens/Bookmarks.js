@@ -3,8 +3,6 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
 
-// import { Item, DefaultHeaderButtons } from '../components/HeaderButtons';
-
 import GradientContainer from '../components/GradientContainer';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
