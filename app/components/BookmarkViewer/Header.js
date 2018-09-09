@@ -6,7 +6,7 @@ import { typography } from '../../styles';
 
 import BookmarkImage from '../Bookmark/BookmarkImage';
 
-import HeaderButton from './Button';
+import HeaderButton, { Icons } from './Button';
 
 const Container = styled.View`
   width: 100%;
@@ -34,7 +34,7 @@ const BookmarkViewerHeader = ({ item }) => (
         drawBackground
       />
       <Title>{item.title}</Title>
-      <HeaderButton />
+      <HeaderButton iconName={Icons.delete} />
     </Info>
   </Container>
 );

@@ -14,7 +14,7 @@ import NewBookmark from './screens/NewBookmark';
 
 const BookmarkStack = createStackNavigator(
   {
-    Bookmark: {
+    Bookmarks: {
       screen: Bookmarks,
     },
     BookmarkViewer: {
@@ -76,7 +76,7 @@ const SettingsStack = createStackNavigator(
 
 const RootStack = createBottomTabNavigator(
   {
-    Bookmark: BookmarkStack,
+    Bookmarks: BookmarkStack,
     Settings: SettingsStack,
   },
   {
@@ -86,7 +86,7 @@ const RootStack = createBottomTabNavigator(
         // We only have two tabs, Settings and Bookmarks
         // So we can just use a ternary operator for now
         const iconName =
-          routeName === 'Bookmark'
+          routeName === 'Bookmarks'
             ? `ios-bookmarks${focused ? '' : '-outline'}`
             : `ios-options${focused ? '' : '-outline'}`;
         // You can return any component that you like here! We usually use an

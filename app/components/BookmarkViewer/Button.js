@@ -3,7 +3,11 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Icon from 'react-native-vector-icons/Feather';
 
-const Icons = {
+import { colors } from '../../styles';
+
+// think of this as an enum
+// export it so we can refer to the icons as a prop
+export const Icons = {
   delete: 'trash',
   browser: 'globe',
   edit: 'edit',
@@ -28,12 +32,16 @@ const Button = styled.TouchableOpacity`
   align-items: center;
 `;
 
-const HeaderButton = ({}) => (
+const HeaderButton = ({ iconName }) => (
   <Container>
     <Button onPress={() => console.log('okkk')}>
-      <Icon name="globe" color="#900" size={15} />
+      <Icon name={iconName} color={colors.flatDarkGrey} size={15} />
     </Button>
   </Container>
 );
+
+HeaderButton.propTypes = {
+  iconName: PropTypes.string.isRequired,
+};
 
 export default HeaderButton;
