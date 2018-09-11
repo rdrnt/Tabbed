@@ -8,16 +8,19 @@ const Text = styled.Text`
   color: red;
 `;
 
-const ErrorMessage = ({ hidden, value }) =>
-  hidden ? <Text>{value}</Text> : null;
+const ErrorMessage = ({ hidden, message }) => {
+  console.log('Are we hidden?', hidden, message);
+  return <Text>{message}</Text>;
+};
 
 ErrorMessage.propTypes = {
-  hidden: PropTypes.bool.isRequired,
-  value: PropTypes.string,
+  hidden: PropTypes.bool,
+  message: PropTypes.string,
 };
 
 ErrorMessage.defaultProps = {
-  value: '',
+  hidden: true,
+  message: '',
 };
 
 export default ErrorMessage;
