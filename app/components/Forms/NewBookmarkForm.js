@@ -49,17 +49,17 @@ const NewBookmarkForm = ({ onSubmit }) => (
       isSubmitting,
     }) => (
       <FormContainer>
+        {/* Title */}
         <TextInput
           name="title"
           onChangeText={handleChange('title')}
           value={values.title}
         />
-        {/*
         <ErrorMessage
-          hidden={errors.title && touched.title}
+          hidden={!errors.title && !touched.title}
           message={errors.title}
         />
-        */}
+        {/* URL */}
         <TextInput
           name="url"
           onChangeText={handleChange('url')}
@@ -68,9 +68,10 @@ const NewBookmarkForm = ({ onSubmit }) => (
           autoCorrect={false}
         />
         <ErrorMessage
-          hidden={errors.url && !touched.url}
+          hidden={!errors.url && !touched.url}
           message={errors.url}
         />
+        {/* Private */}
         <SwitchInput
           name="private"
           onValueChange={value => setFieldValue('private', value)}

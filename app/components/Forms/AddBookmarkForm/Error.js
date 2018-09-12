@@ -8,10 +8,8 @@ const Text = styled.Text`
   color: red;
 `;
 
-const ErrorMessage = ({ hidden, message }) => {
-  console.log('Are we hidden?', hidden, message);
-  return <Text>{message}</Text>;
-};
+const ErrorMessage = ({ hidden, message }) =>
+  hidden ? null : <Text>{message}</Text>;
 
 ErrorMessage.propTypes = {
   hidden: PropTypes.bool,

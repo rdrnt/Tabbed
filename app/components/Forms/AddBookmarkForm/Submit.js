@@ -10,8 +10,8 @@ const Button = styled.TouchableHighlight`
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100px;
-  height: 50px;
+  width: 85px;
+  height: 40px;
   align-self: center;
   border-radius: 25px;
   margin-top: 20px;
