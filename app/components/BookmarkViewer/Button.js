@@ -15,17 +15,18 @@ export const Icons = {
 
 const Container = styled.View`
   background-color: white;
-  height: 25px;
-  width: 25px;
-  border-radius: ${25 / 2};
+  height: 35px;
+  width: 35px;
+  border-radius: ${35 / 2};
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: 0px 10px;
 `;
 
 const Button = styled.TouchableOpacity`
-  height: 15px;
-  width: 15px;
+  height: 25px;
+  width: 25px;
   align-self: center;
   display: flex;
   justify-content: center;

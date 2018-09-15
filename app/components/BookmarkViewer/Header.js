@@ -24,6 +24,12 @@ const Title = styled.Text`
   color: white;
 `;
 
+const ButtonContainer = styled.View`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+`;
+
 const BookmarkViewerHeader = ({ item }) => (
   <Container>
     <Info>
@@ -34,7 +40,11 @@ const BookmarkViewerHeader = ({ item }) => (
         drawBackground
       />
       <Title>{item.title}</Title>
-      <HeaderButton iconName={Icons.delete} />
+      <ButtonContainer>
+        <HeaderButton iconName={Icons.delete} />
+        <HeaderButton iconName={Icons.browser} />
+        <HeaderButton iconName={Icons.edit} />
+      </ButtonContainer>
     </Info>
   </Container>
 );
