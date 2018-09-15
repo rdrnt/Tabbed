@@ -7,7 +7,7 @@ import { colors } from '../../styles';
 import BookmarkImage from './BookmarkImage';
 
 const TouchContainer = styled.TouchableHighlight`
-  padding-bottom: 15px;
+  padding: 15px 0px;
 `;
 
 const Cell = styled.View`

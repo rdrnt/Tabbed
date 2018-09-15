@@ -1,88 +1,57 @@
-import React, { Component } from 'react';
-import { StyleSheet, Text, View, SectionList } from 'react-native';
+import React from 'react';
+import { SectionList } from 'react-native';
 import PropTypes from 'prop-types';
-
-import { globals } from '../../helpers';
+import styled from 'styled-components';
 
 import BookmarkCell from './BookmarkCell';
 
-const sectionStyles = StyleSheet.create({
-  title: {
-    fontWeight: 'bold',
-    color: 'white',
-  },
-  view: {
-    backgroundColor: 'rgba(255, 255, 255, 0.0)',
-    paddingHorizontal: 16,
-    paddingVertical: 5,
-  },
-  seperator: {
-    backgroundColor: 'rgba(255, 255, 255, 0.0)',
-    height: 1,
-    marginLeft: 16,
-  },
-  noItems: {
-    height: '100%',
-    backgroundColor: globals.colors.lighterGrey,
-    flex: 1,
-  },
-});
+const Title = styled.Text`
+  font-weight: bold;
+  color: white;
+`;
 
-class BookmarkList extends Component {
-  constructor(props) {
-    super(props);
+const HeaderContainer = styled.View`
+  background-color: 'rgba(255, 255, 255, 0.0)';
+  padding: 0px 16px;
+`;
 
-    this.onCellPress = this.onCellPress.bind(this);
-    this.renderItem = this.renderItem.bind(this);
+const Seperator = styled.View`
+  background-color: 'rgba(255, 255, 255, 0.0)';
+  height: 1px;
+  margin-left: 16px;
+`;
 
-    console.log(this.props);
-  }
+const BookmarkList = ({ bookmarks, navigation }) => {
+  // Item seperator
+  const renderitemSeparator = () => <Seperator />;
 
-  onCellPress(item) {
-    this.props.navigation.navigate('BookmarkViewer', {
+  // The headeer for each section
+  const renderSectionHeader = ({ section }) => (
+    <HeaderContainer>
+      <Title>{section.title}</Title>
+    </HeaderContainer>
+  );
+
+  const onCellPress = ({ item }) => {
+    navigation.navigate('BookmarkViewer', {
       item,
     });
-  }
+  };
 
-  _renderSectionHeader({ section }) {
-    return (
-      <View style={sectionStyles.view}>
-        <Text style={sectionStyles.title}>{section.title}</Text>
-      </View>
-    );
-  }
+  const renderItem = ({ item, index }) => (
+    <BookmarkCell key={index} item={item} onPress={onCellPress} />
+  );
 
-  _renderitemSeparator({ leadingItem, section }) {
-    return <View style={sectionStyles.seperator} />;
-  }
-
-  _renderComponentIfNoItems() {
-    return (
-      <View>
-        <Text>No items available.</Text>
-        <Text>Click here to add a new bookmark.</Text>
-      </View>
-    );
-  }
-
-  renderItem({ item, index }) {
-    return <BookmarkCell key={index} item={item} onPress={this.onCellPress} />;
-  }
-
-  render() {
-    const { bookmarks } = this.props;
-
-    return (
-      <SectionList
-        renderItem={this.renderItem}
-        renderSectionHeader={this._renderSectionHeader}
-        ItemSeparatorComponent={this._renderitemSeparator}
-        sections={bookmarks}
-        keyExtractor={(item, index) => item + index}
-      />
-    );
-  }
-}
+  return (
+    <SectionList
+      renderItem={renderItem}
+      renderSectionHeader={renderSectionHeader}
+      ItemSeparatorComponent={renderitemSeparator}
+      sections={bookmarks}
+      keyExtractor={(item, index) => item + index}
+    />
+  );
+};
 
 BookmarkList.propTypes = {
   bookmarks: PropTypes.arrayOf(PropTypes.shape).isRequired,
