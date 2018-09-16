@@ -32,7 +32,7 @@ const BookmarkList = ({ bookmarks, navigation }) => {
     </HeaderContainer>
   );
 
-  const onCellPress = ({ item }) => {
+  const onCellPress = item => {
     navigation.navigate('BookmarkViewer', {
       item,
     });

@@ -19,6 +19,7 @@ class BookmarkViewer extends Component {
     this.state = {
       isUnlocked: true,
     };
+    console.log(props);
   }
 
   componentDidMount() {

@@ -23,7 +23,13 @@ const GradientContainer = ({ children }) => (
     {/* Light status bar */}
     <StatusBar barStyle="light-content" />
     {/* We have to do getHeaderInset for the transulect Navigation bar */}
-    <ScrollView {...getHeaderInset()}>{children}</ScrollView>
+    <ScrollView
+      {...getHeaderInset()}
+      scrollEventThrottle={16}
+      onScroll={value => console.log(value.nativeEvent.contentOffset.y)}
+    >
+      {children}
+    </ScrollView>
   </LinearGradient>
 );
 

@@ -1,6 +1,9 @@
 import Realm from 'realm';
 import { bookmarkUtils } from '.';
 
+import { bookmarkActions } from '../actions';
+import store from '../store';
+
 const BookmarkSchema = {
   name: 'Bookmark',
   properties: {
@@ -25,8 +28,10 @@ realm.objects('Bookmark').addListener((bookmarks, changes) => {
 
   insertions.forEach(index => {
     const modifiedMarks = bookmarks[index];
-    console.log('modifiedMarks', modifiedMarks);
-    console.log(modifiedMarks.title);
+    console.log('insertions', modifiedMarks);
+
+    // Since we have a new bookmark added, fetch (aka update) the new bookmarks
+    store.dispatch(bookmarkActions.fetchBookmarks());
   });
 
   deletions.forEach(index => {
