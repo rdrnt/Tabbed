@@ -22,7 +22,7 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
 * Sync bookmarks
 * Ability to add bookmark
   * ~~Create form layout~~
-  * OnSubmit validation
+  * ~OnSubmit validation~
   * categories have better implementation
 * URL's have the following properties
   * Title
@@ -51,5 +51,5 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
 
 ### I know it doesn't look amazing, please feel free to open an issue with design suggestions <3
 
-![Screenshot depicting the main page of Tabbed](/screenshots/SS1.png?raw=true 'Screenshot 1')
-![Screenshot of Tabbed with the Add Bookmark Form](/screenshots/SS2.png?raw=true 'Screenshot 2')
+<img src="./screenshots/SS1.png" alt="Tabbed homescreen" width=281 height=609/>
+<img src="./screenshots/SS2.png" alt="Tabbed add bookmark form" width=281 height=609/>
