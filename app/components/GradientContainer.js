@@ -20,7 +20,6 @@ class GradientContainer extends React.Component {
     super(props);
 
     this.state = {
-      statusBarEnabled: false,
       scroll: {
         y: 0,
       },
@@ -28,6 +27,7 @@ class GradientContainer extends React.Component {
   }
 
   render() {
+    const { scrollEnabled, children } = this.props;
     return (
       <LinearGradient
         colors={colors.gradients.background}
@@ -40,25 +40,34 @@ class GradientContainer extends React.Component {
         which makes our content go underneath and mess with the layout */}
         <View style={{ height: 89 }} />
         {/* We have to do getHeaderInset for the transulect Navigation bar */}
-        <ScrollView
-          scrollEventThrottle={16}
-          onScroll={value =>
-            this.setState({ scroll: { y: value.nativeEvent.contentOffset.y } })
-          }
-        >
-          {this.props.children}
-        </ScrollView>
+        {scrollEnabled ? (
+          <ScrollView
+            scrollEventThrottle={16}
+            onScroll={value => console.log(value)}
+          >
+            {this.props.children}
+          </ScrollView>
+        ) : (
+          children
+        )}
       </LinearGradient>
     );
   }
 }
 
+/*
+  children: should be react elements
+  scrollEnabled: if the view needs to have a ScrollView or not
+*/
+
 GradientContainer.propTypes = {
   children: PropTypes.oneOf(PropTypes.element),
+  scrollEnabled: PropTypes.bool,
 };
 
 GradientContainer.defaultProps = {
   children: null,
+  scrollEnabled: true,
 };
 
 export default GradientContainer;

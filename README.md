@@ -23,6 +23,7 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
   * ~~Create form layout~~
   * ~OnSubmit validation~
   * categories have better implementation
+* Search for bookmarks (currently implemented, though you can't actually search)
 * URL's have the following properties
   * Title
   * URL

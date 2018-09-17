@@ -79,7 +79,7 @@ class Bookmarks extends Component {
   render() {
     const { bookmarks, search } = this.state;
     return (
-      <GradientContainer>
+      <GradientContainer scrollEnabled={false}>
         <BookmarkSearch
           onChangeText={value => console.log(value)}
           enabled={search.enabled}
