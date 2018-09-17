@@ -38,6 +38,9 @@ const BookmarkStack = createStackNavigator(
       ),
       headerTintColor: '#FFF',
       // Removes line under nav bar
+      headerStyle: {
+        borderBottomWidth: 0,
+      },
     },
   }
 );
