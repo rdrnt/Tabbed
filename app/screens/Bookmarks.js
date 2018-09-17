@@ -6,6 +6,7 @@ import Ionicons from 'react-native-vector-icons/Ionicons';
 import GradientContainer from '../components/GradientContainer';
 
 import BookmarkList from '../components/Bookmark/BookmarkList';
+import BookmarkSearch from '../components/Bookmark/SearchBar';
 
 import { bookmarkActions } from '../actions';
 
@@ -19,14 +20,22 @@ class Bookmarks extends Component {
   static navigationOptions = ({ navigation }) => {
     return {
       title: 'Bookmarks',
-      headerRight: (
+      headerRight: [
         <Ionicons.Button
           backgroundColor="transparent"
           name="ios-add"
           color="white"
           onPress={() => navigation.navigate('NewBookmark')}
-        />
-      ),
+          key="add"
+        />,
+        <Ionicons.Button
+          backgroundColor="transparent"
+          name="ios-search"
+          color="white"
+          onPress={navigation.getParam('updateSearchState')}
+          key="search"
+        />,
+      ],
     };
   };
 
@@ -45,19 +54,37 @@ class Bookmarks extends Component {
 
     this.state = {
       bookmarks: [],
+      search: {
+        enabled: false,
+        value: '',
+      },
     };
   }
 
   componentDidMount() {
-    const { dispatch } = this.props;
+    const { dispatch, navigation } = this.props;
+
+    // SO we can access this.setState from navigation header button
+    navigation.setParams({ updateSearchState: this.updateSearchState });
 
     dispatch(bookmarkActions.fetchBookmarks());
   }
 
+  updateSearchState = () => {
+    const { search } = this.state;
+    this.setState({ search: { enabled: !search.enabled } });
+  };
+
   render() {
-    const { bookmarks } = this.state;
+    const { bookmarks, search } = this.state;
     return (
       <GradientContainer>
+        {search.enabled ? (
+          <BookmarkSearch
+            placeholder="Search"
+            onChangeText={value => console.log(value)}
+          />
+        ) : null}
         <BookmarkList
           bookmarks={bookmarks}
           navigation={this.props.navigation}

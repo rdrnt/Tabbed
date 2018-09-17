@@ -15,23 +15,41 @@ const containerStyles = StyleSheet.create({
   },
 });
 
-const GradientContainer = ({ children }) => (
-  <LinearGradient
-    colors={colors.gradients.background}
-    style={containerStyles.container}
-  >
-    {/* Light status bar */}
-    <StatusBar barStyle="light-content" />
-    {/* We have to do getHeaderInset for the transulect Navigation bar */}
-    <ScrollView
-      {...getHeaderInset()}
-      scrollEventThrottle={16}
-      onScroll={value => console.log(value.nativeEvent.contentOffset.y)}
-    >
-      {children}
-    </ScrollView>
-  </LinearGradient>
-);
+class GradientContainer extends React.Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      statusBarEnabled: false,
+      scroll: {
+        y: 0,
+      },
+    };
+  }
+
+  render() {
+    const { search } = this.state;
+    return (
+      <LinearGradient
+        colors={colors.gradients.background}
+        style={containerStyles.container}
+      >
+        {/* Light status bar */}
+        <StatusBar barStyle="light-content" />
+        {/* We have to do getHeaderInset for the transulect Navigation bar */}
+        <ScrollView
+          {...getHeaderInset()}
+          scrollEventThrottle={16}
+          onScroll={value =>
+            this.setState({ scroll: { y: value.nativeEvent.contentOffset.y } })
+          }
+        >
+          {this.props.children}
+        </ScrollView>
+      </LinearGradient>
+    );
+  }
+}
 
 GradientContainer.propTypes = {
   children: PropTypes.oneOf(PropTypes.element),

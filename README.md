@@ -13,7 +13,6 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
 ### UI
 
 * Dark mode
-* Clean up styles
 * Searching / Sorting
 * Check if we're following Apple's guidelines
 
