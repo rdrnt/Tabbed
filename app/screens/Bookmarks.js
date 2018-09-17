@@ -79,12 +79,10 @@ class Bookmarks extends Component {
     const { bookmarks, search } = this.state;
     return (
       <GradientContainer>
-        {search.enabled ? (
-          <BookmarkSearch
-            placeholder="Search"
-            onChangeText={value => console.log(value)}
-          />
-        ) : null}
+        <BookmarkSearch
+          onChangeText={value => console.log(value)}
+          enabled={search.enabled}
+        />
         <BookmarkList
           bookmarks={bookmarks}
           navigation={this.props.navigation}
