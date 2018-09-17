@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -64,7 +65,7 @@ class Bookmarks extends Component {
   componentDidMount() {
     const { dispatch, navigation } = this.props;
 
-    // SO we can access this.setState from navigation header button
+    // So we can access this.setState from navigation header button
     navigation.setParams({ updateSearchState: this.updateSearchState });
 
     dispatch(bookmarkActions.fetchBookmarks());

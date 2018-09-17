@@ -8,42 +8,49 @@ const AnimatedContainer = styled(
     visible: {
       opacity: 1,
       scaleY: 1,
+      y: 0,
     },
     hidden: {
       opacity: 0,
       scaleY: 0,
+      y: -50,
     },
   })
-)`
-  padding: 16px;
-`;
+)``;
 
 const Search = styled.TextInput`
   background-color: white;
   height: 50px;
+  margin: 16px;
   padding: 0px 16px;
   border-radius: 8;
   font-weight: 600;
   font-size: 17px;
 `;
 
-const BookmarkSearch = props => {
-  console.log('The props are', props);
+const BookmarkSearch = ({ enabled, onChangeText }) => {
   return (
-    <AnimatedContainer pose={props.enabled ? 'visible' : 'hidden'}>
-      <Search
-        value=""
-        onChangeText={value => console.log(value)}
-        placeholder="Search..."
-        clearButtonMode="while-editing"
-        multiline={false}
-      />
+    <AnimatedContainer pose={enabled ? 'visible' : 'hidden'}>
+      {enabled ? (
+        <Search
+          value=""
+          onChangeText={onChangeText}
+          placeholder="Search..."
+          clearButtonMode="while-editing"
+          multiline={false}
+        />
+      ) : null}
     </AnimatedContainer>
   );
 };
 
 BookmarkSearch.propTypes = {
   onChangeText: PropTypes.func.isRequired,
+  enabled: PropTypes.bool,
+};
+
+BookmarkSearch.defaultProps = {
+  enabled: false,
 };
 
 export default BookmarkSearch;

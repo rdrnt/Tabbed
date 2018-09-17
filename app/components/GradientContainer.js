@@ -1,5 +1,5 @@
 import React from 'react';
-import { StyleSheet, ScrollView, StatusBar } from 'react-native';
+import { StyleSheet, ScrollView, StatusBar, View } from 'react-native';
 import PropTypes from 'prop-types';
 
 import LinearGradient from 'react-native-linear-gradient';
@@ -28,7 +28,6 @@ class GradientContainer extends React.Component {
   }
 
   render() {
-    const { search } = this.state;
     return (
       <LinearGradient
         colors={colors.gradients.background}
@@ -36,9 +35,12 @@ class GradientContainer extends React.Component {
       >
         {/* Light status bar */}
         <StatusBar barStyle="light-content" />
+        {/* Use this view so we can act like the header isnt actually transparent
+        The issue is, since if it's transparent the position is set to 'absolute'
+        which makes our content go underneath and mess with the layout */}
+        <View style={{ height: 89 }} />
         {/* We have to do getHeaderInset for the transulect Navigation bar */}
         <ScrollView
-          {...getHeaderInset()}
           scrollEventThrottle={16}
           onScroll={value =>
             this.setState({ scroll: { y: value.nativeEvent.contentOffset.y } })

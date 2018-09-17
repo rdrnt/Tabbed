@@ -27,7 +27,7 @@
     "react-native-gifted-form": "^0.1.1",
     "react-native-iphone-x-helper": "^1.0.3",
     "react-native-linear-gradient": "^2.4.0",
-    "react-native-pose": "^0.8.0",
+    "react-native-pose": "latest",
     "react-native-svg": "^6.5.0",
     "react-native-svg-uri": "^1.2.3",
     "react-native-touch-id": "^4.0.1",
