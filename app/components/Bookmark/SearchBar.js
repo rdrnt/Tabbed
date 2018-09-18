@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import posed from 'react-native-pose';
 
+/*
 const AnimatedContainer = styled(
   posed.View({
     visible: {
@@ -17,6 +18,7 @@ const AnimatedContainer = styled(
     },
   })
 )``;
+*/
 
 const Search = styled.TextInput`
   background-color: white;
@@ -28,29 +30,19 @@ const Search = styled.TextInput`
   font-size: 17px;
 `;
 
-const BookmarkSearch = ({ enabled, onChangeText }) => {
-  return (
-    <AnimatedContainer pose={enabled ? 'visible' : 'hidden'}>
-      {enabled ? (
-        <Search
-          value=""
-          onChangeText={onChangeText}
-          placeholder="Search..."
-          clearButtonMode="while-editing"
-          multiline={false}
-        />
-      ) : null}
-    </AnimatedContainer>
-  );
-};
+const BookmarkSearch = ({ onChangeText }) => (
+  <Search
+    value=""
+    onChangeText={onChangeText}
+    placeholder="Search..."
+    clearButtonMode="while-editing"
+    multiline={false}
+    autoCorrect={false}
+  />
+);
 
 BookmarkSearch.propTypes = {
   onChangeText: PropTypes.func.isRequired,
-  enabled: PropTypes.bool,
-};
-
-BookmarkSearch.defaultProps = {
-  enabled: false,
 };
 
 export default BookmarkSearch;

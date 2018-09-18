@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import Ionicons from 'react-native-vector-icons/Ionicons';
@@ -29,13 +28,6 @@ class Bookmarks extends Component {
           onPress={() => navigation.navigate('NewBookmark')}
           key="add"
         />,
-        <Ionicons.Button
-          backgroundColor="transparent"
-          name="ios-search"
-          color="white"
-          onPress={navigation.getParam('updateSearchState')}
-          key="search"
-        />,
       ],
     };
   };
@@ -63,27 +55,16 @@ class Bookmarks extends Component {
   }
 
   componentDidMount() {
-    const { dispatch, navigation } = this.props;
-
-    // So we can access this.setState from navigation header button
-    navigation.setParams({ updateSearchState: this.updateSearchState });
+    const { dispatch } = this.props;
 
     dispatch(bookmarkActions.fetchBookmarks());
   }
 
-  updateSearchState = () => {
-    const { search } = this.state;
-    this.setState({ search: { enabled: !search.enabled } });
-  };
-
   render() {
-    const { bookmarks, search } = this.state;
+    const { bookmarks } = this.state;
     return (
       <GradientContainer scrollEnabled={false}>
-        <BookmarkSearch
-          onChangeText={value => console.log(value)}
-          enabled={search.enabled}
-        />
+        <BookmarkSearch onChangeText={value => console.log(value)} />
         <BookmarkList
           bookmarks={bookmarks}
           navigation={this.props.navigation}
