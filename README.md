@@ -44,8 +44,9 @@ When commiting, please try your best to use [this](http://karma-runner.github.io
 
 ## Libraries
 
-* Using [Realm](https://realm.io/docs/javascript/latest/) for strorage
+* Using [Realm](https://realm.io/docs/javascript/latest/) for storage
 * [react-native-touch-id](https://github.com/naoufal/react-native-touch-id) for biometrics (unlocking via FaceID/TouchID)
+* Using [Pose](https://popmotion.io/pose/) for animations
 
 ## Screenshots
 

@@ -24,7 +24,6 @@
     "prop-types": "^15.6.1",
     "react": "16.4.1",
     "react-native": "0.56.0",
-    "react-native-gifted-form": "^0.1.1",
     "react-native-iphone-x-helper": "^1.0.3",
     "react-native-linear-gradient": "^2.4.0",
     "react-native-pose": "latest",

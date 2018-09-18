@@ -47,11 +47,10 @@ class Bookmarks extends Component {
 
     this.state = {
       bookmarks: [],
-      search: {
-        enabled: false,
-        value: '',
-      },
+      searchValue: '',
     };
+
+    this.onSearchValueChanged = this.onSearchValueChanged.bind(this);
   }
 
   componentDidMount() {
@@ -60,13 +59,24 @@ class Bookmarks extends Component {
     dispatch(bookmarkActions.fetchBookmarks());
   }
 
+  onSearchValueChanged(value) {}
+
   render() {
-    const { bookmarks } = this.state;
+    const { bookmarks, searchValue } = this.state;
     return (
       <GradientContainer scrollEnabled={false}>
-        <BookmarkSearch onChangeText={value => console.log(value)} />
+        <BookmarkSearch
+          onChangeText={value => this.setState({ searchValue: value })}
+          value={searchValue}
+        />
         <BookmarkList
-          bookmarks={bookmarks}
+          bookmarks={
+            searchValue.length > 0
+              ? bookmarks.filter(bookmark =>
+                  bookmark.data[0].title.includes(searchValue)
+                )
+              : bookmarks
+          }
           navigation={this.props.navigation}
         />
       </GradientContainer>

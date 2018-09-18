@@ -30,9 +30,9 @@ const Search = styled.TextInput`
   font-size: 17px;
 `;
 
-const BookmarkSearch = ({ onChangeText }) => (
+const BookmarkSearch = ({ onChangeText, value }) => (
   <Search
-    value=""
+    value={value}
     onChangeText={onChangeText}
     placeholder="Search..."
     clearButtonMode="while-editing"
@@ -43,6 +43,11 @@ const BookmarkSearch = ({ onChangeText }) => (
 
 BookmarkSearch.propTypes = {
   onChangeText: PropTypes.func.isRequired,
+  value: PropTypes.string,
+};
+
+BookmarkSearch.defaultProps = {
+  value: '',
 };
 
 export default BookmarkSearch;
